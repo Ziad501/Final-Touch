@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj": {}
+    "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj": {}
   },
   "projects": {
-    "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj": {
+    "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
+        "projectUniqueName": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
         "projectName": "FinalTouch.Api",
-        "projectPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
-        "packagesPath": "C:\\Users\\ziadm\\.nuget\\packages\\",
-        "outputPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\obj\\",
+        "projectPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
+        "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+        "outputPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ziadm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,14 +26,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
-                "projectPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj"
+              "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
+                "projectPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj"
               }
             }
           }
@@ -96,24 +97,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj": {
+    "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj",
+        "projectUniqueName": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj",
         "projectName": "FinalTouch.Core",
-        "projectPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj",
-        "packagesPath": "C:\\Users\\ziadm\\.nuget\\packages\\",
-        "outputPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\obj\\",
+        "projectPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj",
+        "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+        "outputPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ziadm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -122,6 +123,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -161,24 +163,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
+    "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj",
+        "projectUniqueName": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj",
         "projectName": "FinalTouch.InfraStructure",
-        "projectPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj",
-        "packagesPath": "C:\\Users\\ziadm\\.nuget\\packages\\",
-        "outputPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\obj\\",
+        "projectPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj",
+        "packagesPath": "C:\\Users\\moham\\.nuget\\packages\\",
+        "outputPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ziadm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\moham\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -187,14 +189,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj": {
-                "projectPath": "D:\\Final Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj"
+              "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj": {
+                "projectPath": "M:\\Final project 3\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Core\\FinalTouch.Core.csproj"
               }
             }
           }
@@ -246,7 +249,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

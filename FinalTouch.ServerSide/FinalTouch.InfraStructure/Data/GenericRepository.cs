@@ -12,7 +12,14 @@ public class GenericRepository<T>(AppDbContext context) : IGenericRepository<T> 
         context.Set<T>().Add(entity);
     }
 
-    public void Delete(T entity)
+	public async Task<int> CountAsync(ISpecification<T> spec)
+	{
+        var query = context.Set<T>().AsQueryable();
+        query = spec.ApplyCriteria(query);
+		return await query.CountAsync();
+	}
+
+	public void Delete(T entity)
     {
         context.Set<T>().Remove(entity);
     }

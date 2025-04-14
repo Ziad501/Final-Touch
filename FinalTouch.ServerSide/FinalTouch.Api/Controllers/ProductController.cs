@@ -1,5 +1,6 @@
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
+using FinalTouch.Core.Specifications;
 using FinalTouch.InfraStructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,19 +10,21 @@ namespace FinalTouch.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController(IProductRepository repo) : ControllerBase
+    public class ProductController(IGenericRepository<Product> repo) : ControllerBase
     {
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? type, string? brand,string? sort)
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand, string? type,string? sort)
         {
-            return Ok(await repo.GetAllProductsAsync(type,brand,sort)) ;
+            var spec = new ProductSpecification(brand, type,sort);
+            var product = await repo.ListAsync(spec);
+            return Ok(product) ;
             
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            Product? product = await repo.GetProductByIdAsync(id);
+            Product? product = await repo.GetByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -31,7 +34,7 @@ namespace FinalTouch.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProdcut(Product product)
         {
-            repo.AddProduct(product);
+            repo.Add(product);
             if(await repo.SaveChangesAsync())
             {
                 return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
@@ -45,7 +48,7 @@ namespace FinalTouch.Api.Controllers
             {
                 return BadRequest("cannot update product with this id");
             }
-            repo.UpdateProduct(product);
+            repo.Update(product);
             if(await repo.SaveChangesAsync()) {return NoContent();}
             
             return BadRequest("problem updating product");
@@ -53,12 +56,12 @@ namespace FinalTouch.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
-            var product = await repo.GetProductByIdAsync(id);
+            var product = await repo.GetByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
-            repo.DeleteProduct(product);
+            repo.Delete(product);
              if(await repo.SaveChangesAsync()) {return NoContent();}
 
             return BadRequest("problem deleting product");
@@ -66,12 +69,14 @@ namespace FinalTouch.Api.Controllers
         [HttpGet("type")]
         public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
         {
-            return Ok(await repo.GetTypeAsync());
+            var spec = new TypeListSpec();
+            return Ok(await repo.ListAsync(spec));
         }
         [HttpGet("brand")]
         public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
         {
-            return Ok(await repo.GetBrandAsync());
+            var spec = new BrandListSpec();
+            return Ok(await repo.ListAsync(spec));
         }
         private bool ProductExists(int id)
         {

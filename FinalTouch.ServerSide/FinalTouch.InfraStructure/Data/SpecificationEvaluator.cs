@@ -25,7 +25,11 @@ public class SpecificationEvaluator<T> where T : BaseEntity
         {
             query = query.Distinct();
         }
-        return query;
+        if (spec.IsPagingEnabled)
+		{
+			query = query.Skip(spec.Skip).Take(spec.Take);
+		}
+		return query;
     }
     public static IQueryable<TResult> GetQuery<TSpec,TResult>(IQueryable<T> query, ISpecification<T,TResult> spec)
     {
@@ -51,7 +55,13 @@ public class SpecificationEvaluator<T> where T : BaseEntity
         {
             selectQuery = selectQuery?.Distinct();
         }
-        return selectQuery?? query.Cast<TResult>();
+		if (spec.IsPagingEnabled)
+		{
+			selectQuery = selectQuery?.Skip(spec.Skip).Take(spec.Take);
+		}
+		// If selectQuery is null, it means the query was not casted to IQueryable<TResult>, so we return the original query casted to TResult
+		// Otherwise, we return the selectQuery
+		return selectQuery ?? query.Cast<TResult>();
         
     }
 

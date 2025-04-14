@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinalTouch.InfraStructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09078ef45ffbb29cdc5b38405489d53970b1a6a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f268bcea013aa56aa5b2ab84d30ef94ca7ebc37")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinalTouch.InfraStructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinalTouch.InfraStructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

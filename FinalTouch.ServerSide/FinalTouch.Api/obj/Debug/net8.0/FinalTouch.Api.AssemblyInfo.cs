@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinalTouch.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74c90bfc2d0a366882f6940b5a0edaf5be8c42b9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09078ef45ffbb29cdc5b38405489d53970b1a6a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinalTouch.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinalTouch.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

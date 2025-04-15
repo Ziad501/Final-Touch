@@ -70,4 +70,6 @@ AssemblyInfo.cs
 # NuGet + build artifacts
 **/obj/
 *.csproj.nuget.*
-project.assets.json
+project.assets.json# Auto-generated .NET build files
+*.deps.json
+*.csproj.FileListAbsolute.txt

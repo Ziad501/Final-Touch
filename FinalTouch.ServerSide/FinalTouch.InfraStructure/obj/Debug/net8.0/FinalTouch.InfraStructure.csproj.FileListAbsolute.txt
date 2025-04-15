@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.deps.json
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.runtimeconfig.json
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.dll
@@ -16,3 +17,23 @@ D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.pdb
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.genruntimeconfig.cache
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\ref\FinalTouch.InfraStructure.dll
+=======
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.deps.json
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.runtimeconfig.json
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.dll
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.pdb
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.Core.dll
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.Core.pdb
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.csproj.AssemblyReference.cache
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.GeneratedMSBuildEditorConfig.editorconfig
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.AssemblyInfoInputs.cache
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.AssemblyInfo.cs
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.csproj.CoreCompileInputs.cache
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.sourcelink.json
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTou.918C9A09.Up2Date
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.dll
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\refint\FinalTouch.InfraStructure.dll
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.pdb
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.genruntimeconfig.cache
+M:\Final project 3\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\ref\FinalTouch.InfraStructure.dll
+>>>>>>> ddd705529d7b80dd37d73c4a9398b1173486df27

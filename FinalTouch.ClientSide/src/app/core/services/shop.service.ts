@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../../shared/models/product';
+import { ShopParams } from '../../shared/models/shopparams';
+import { Pagination } from '../../shared/models/pagination';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,25 @@ export class ShopService {
   types: string[] = [];
   brands: string[] = [];
 
-  getProducts(types?: string[],brands?: string[]) {
+  getProducts(shopParams: ShopParams) {
     let params = new HttpParams();
 
-    if (brands && brands.length > 0) {
-      params = params.append('brand', brands.join(','));
+    if (shopParams.brand.length > 0) {
+      params = params.append('brands', shopParams.brand.join(','));
     }
-    if (types && types.length > 0) {
-      params = params.append('type', types.join(','));
+    if (shopParams.type.length > 0) {
+      params = params.append('types', shopParams.type.join(','));
     }
+    if (shopParams.sort) {
+      params = params.append('sort', shopParams.sort);
+    }
+    if (shopParams.search) {
+      params = params.append('search', shopParams.search);
+    }
+    params = params.append('pageSize', shopParams.pageSize);
+    params = params.append('pageIndex', shopParams.pageNumber);
 
-    return this.http.get<Product[]>(this.baseUrl + 'Product', {params});//product[] need to be changed to Pagination<Product>
+    return this.http.get<Pagination<Product>>(this.baseUrl + 'Product', {params});//product[] need to be changed to Pagination<Product>
   }
 
   getBrands() {

@@ -67,3 +67,7 @@ sass-cache/
 AssemblyInfo.cs
 *.sourceinfo.json
 *.sourcelink.json
+# NuGet + build artifacts
+**/obj/
+*.csproj.nuget.*
+project.assets.json

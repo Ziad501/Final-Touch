@@ -28,3 +28,58 @@ out-tsc/
 # ===================================
 .DS_Store
 Thumbs.db
+# ===================================
+# Angular Build Output
+# ===================================
+/dist
+/tmp
+/out-tsc
+/.angular/cache
+/bazel-out
+
+# ===================================
+# Node Modules and Logs
+# ===================================
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# ===================================
+# Coverage and Testing
+# ===================================
+/coverage
+/testem.log
+/libpeerconnection.log
+
+# ===================================
+# IDEs and Editors
+# ===================================
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# ===================================
+# System Files
+# ===================================
+.DS_Store
+Thumbs.db
+
+# ===================================
+# Typings and Misc
+# ===================================
+/typings
+/connect.lock
+/sass-cache/
+

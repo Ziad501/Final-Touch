@@ -1,3 +1,4 @@
+using FinalTouch.Api.Middleware;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,7 @@ app.UseHttpsRedirection();
 app.UseCors("AllowAngularApp"); // Use the CORS policy
 app.UseAuthorization();
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 
 try{

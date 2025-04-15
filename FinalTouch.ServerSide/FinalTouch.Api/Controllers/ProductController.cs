@@ -1,24 +1,21 @@
+using FinalTouch.Api.RequestHelpers;
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.Core.Specifications;
-using FinalTouch.InfraStructure.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FinalTouch.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductController(IGenericRepository<Product> repo) : ControllerBase
+    public class ProductController(IGenericRepository<Product> repo) : BaseApiController
     {
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand, string? type,string? sort)
+        public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
-            var spec = new ProductSpecification(brand, type,sort);
-            var product = await repo.ListAsync(spec);
-            return Ok(product) ;
+            var spec = new ProductSpecification(specParams);
+
+            
+			return await CreatePagedResult(repo, spec,specParams.PageIndex,specParams.PageSize);
             
         }
         [HttpGet("{id}")]

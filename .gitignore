@@ -1,0 +1,69 @@
+# ===================================
+# .NET ServerSide (FinalTouch.ServerSide)
+# ===================================
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.user
+*.suo
+*.db
+*.cache
+*.sourceinfo.json
+*.AssemblyReference.cache
+.vs/
+
+# EF Core migrations (optional - ignore only if not tracking migrations)
+# Migrations/
+
+# ===================================
+# Angular ClientSide (FinalTouch.ClientSide)
+# ===================================
+**/node_modules/
+**/dist/
+**/.angular/
+**/.env
+.cache/
+out-tsc/
+bazel-out/
+coverage/
+testem.log
+libpeerconnection.log
+
+# ===================================
+# Logs
+# ===================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===================================
+# IDEs and Editors
+# ===================================
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# ===================================
+# System & Misc
+# ===================================
+.DS_Store
+Thumbs.db
+typings/
+connect.lock
+sass-cache/
+AssemblyInfo.cs
+*.sourceinfo.json
+*.sourcelink.json

@@ -1,0 +1,30 @@
+# ===================================
+# .NET ServerSide (FinalTouch.ServerSide)
+# ===================================
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+*.db
+
+# EF Migrations metadata
+Migrations/
+
+# ===================================
+# Angular ClientSide (FinalTouch.ClientSide)
+# ===================================
+node_modules/
+dist/
+.angular/
+.env
+
+# Angular build cache
+.cache/
+out-tsc/
+
+# ===================================
+# Global OS & IDE junk
+# ===================================
+.DS_Store
+Thumbs.db

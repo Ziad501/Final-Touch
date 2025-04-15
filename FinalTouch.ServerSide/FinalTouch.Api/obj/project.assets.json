@@ -5656,23 +5656,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bedo\\.nuget\\packages\\": {},
+    "C:\\Users\\triplem\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Courses\\ITI\\Graduation Project\\Project\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
+      "projectUniqueName": "d:\\ITI intensive course .net\\m4ro3 ta5rog\\ProjectMa4ro7\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
       "projectName": "FinalTouch.Api",
-      "projectPath": "D:\\Courses\\ITI\\Graduation Project\\Project\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
-      "packagesPath": "C:\\Users\\Bedo\\.nuget\\packages\\",
-      "outputPath": "D:\\Courses\\ITI\\Graduation Project\\Project\\FinalTouch.ServerSide\\FinalTouch.Api\\obj\\",
+      "projectPath": "d:\\ITI intensive course .net\\m4ro3 ta5rog\\ProjectMa4ro7\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\FinalTouch.Api.csproj",
+      "packagesPath": "C:\\Users\\triplem\\.nuget\\packages\\",
+      "outputPath": "d:\\ITI intensive course .net\\m4ro3 ta5rog\\ProjectMa4ro7\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Bedo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\triplem\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5687,8 +5687,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Courses\\ITI\\Graduation Project\\Project\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
-              "projectPath": "D:\\Courses\\ITI\\Graduation Project\\Project\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj"
+            "d:\\ITI intensive course .net\\m4ro3 ta5rog\\ProjectMa4ro7\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj": {
+              "projectPath": "d:\\ITI intensive course .net\\m4ro3 ta5rog\\ProjectMa4ro7\\Final-Touch\\FinalTouch.ServerSide\\FinalTouch.InfraStructure\\FinalTouch.InfraStructure.csproj"
             }
           }
         }
@@ -5751,7 +5751,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

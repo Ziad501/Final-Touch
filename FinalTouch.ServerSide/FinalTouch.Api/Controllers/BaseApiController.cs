@@ -1,6 +1,6 @@
-﻿using FinalTouch.Api.RequestHelpers;
-using FinalTouch.Core.Entities;
+﻿using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
+using FinalTouch.Api.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalTouch.Api.Controllers

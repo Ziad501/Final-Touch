@@ -1,55 +1,41 @@
 # ===================================
 # .NET ServerSide (FinalTouch.ServerSide)
 # ===================================
-bin/
-obj/
+**/bin/
+**/obj/
+*.dll
+*.pdb
 *.user
 *.suo
-*.vs/
 *.db
+*.cache
+*.sourceinfo.json
+*.AssemblyReference.cache
+.vs/
 
-# EF Migrations metadata
-Migrations/
+# EF Core migrations (optional - ignore only if not tracking migrations)
+# Migrations/
 
 # ===================================
 # Angular ClientSide (FinalTouch.ClientSide)
 # ===================================
-node_modules/
-dist/
-.angular/
-.env
-
-# Angular build cache
+**/node_modules/
+**/dist/
+**/.angular/
+**/.env
 .cache/
 out-tsc/
+bazel-out/
+coverage/
+testem.log
+libpeerconnection.log
 
 # ===================================
-# Global OS & IDE junk
+# Logs
 # ===================================
-.DS_Store
-Thumbs.db
-# ===================================
-# Angular Build Output
-# ===================================
-/dist
-/tmp
-/out-tsc
-/.angular/cache
-/bazel-out
-
-# ===================================
-# Node Modules and Logs
-# ===================================
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# ===================================
-# Coverage and Testing
-# ===================================
-/coverage
-/testem.log
-/libpeerconnection.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # ===================================
 # IDEs and Editors
@@ -63,23 +49,21 @@ yarn-error.log
 *.sublime-workspace
 
 # VS Code
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
 
 # ===================================
-# System Files
+# System & Misc
 # ===================================
 .DS_Store
 Thumbs.db
-
-# ===================================
-# Typings and Misc
-# ===================================
-/typings
-/connect.lock
-/sass-cache/
-
+typings/
+connect.lock
+sass-cache/
+AssemblyInfo.cs
+*.sourceinfo.json
+*.sourcelink.json

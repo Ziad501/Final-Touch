@@ -51,3 +51,21 @@ D:\Courses\ITI\Graduation Project\Project\FinalTouch.ServerSide\FinalTouch.Infra
 D:\Courses\ITI\Graduation Project\Project\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.pdb
 D:\Courses\ITI\Graduation Project\Project\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.genruntimeconfig.cache
 D:\Courses\ITI\Graduation Project\Project\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\ref\FinalTouch.InfraStructure.dll
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.deps.json
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.runtimeconfig.json
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.dll
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.InfraStructure.pdb
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.Core.dll
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\bin\Debug\net8.0\FinalTouch.Core.pdb
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.csproj.AssemblyReference.cache
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.AssemblyInfoInputs.cache
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.AssemblyInfo.cs
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.csproj.CoreCompileInputs.cache
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.sourcelink.json
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTou.918C9A09.Up2Date
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.dll
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\refint\FinalTouch.InfraStructure.dll
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.pdb
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\FinalTouch.InfraStructure.genruntimeconfig.cache
+D:\ITI intensive course .net\m4ro3 ta5rog\ProjectMa4ro7\Final-Touch\FinalTouch.ServerSide\FinalTouch.InfraStructure\obj\Debug\net8.0\ref\FinalTouch.InfraStructure.dll

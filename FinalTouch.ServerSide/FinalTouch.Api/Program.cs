@@ -1,4 +1,5 @@
 using FinalTouch.Api.Middleware;
+using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -21,11 +22,11 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("https://localhost:4200") // Your Angular dev server
             .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials(); // Optional, if you're using cookies or auth headers
+            .AllowAnyMethod(); 
     });
 });
-
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,7 +41,7 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
-
+app.MapIdentityApi<AppUser>();
 try{
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;

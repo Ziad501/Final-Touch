@@ -2,7 +2,9 @@ using FinalTouch.Api.Middleware;
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
+using FinalTouch.InfraStructure.Services;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +27,19 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod(); 
     });
 });
+<<<<<<< HEAD
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
+=======
+builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
+{
+	var connString = builder.Configuration.GetConnectionString("Redis") ?? throw new Exception("Connection string 'Redis' not found.");
+	var configuration = ConfigurationOptions.Parse(connString, true);
+    return ConnectionMultiplexer.Connect(configuration);
+});
+builder.Services.AddSingleton<ICartService, CartService>();
+
+>>>>>>> 59f47c27f62b877fd57cba1ead680fe0c44a27bf
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

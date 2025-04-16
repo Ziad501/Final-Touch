@@ -24,13 +24,10 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins("https://localhost:4200") // Your Angular dev server
             .AllowAnyHeader()
-            .AllowAnyMethod(); 
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
-<<<<<<< HEAD
-builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
-=======
 builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
 {
 	var connString = builder.Configuration.GetConnectionString("Redis") ?? throw new Exception("Connection string 'Redis' not found.");
@@ -38,8 +35,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
     return ConnectionMultiplexer.Connect(configuration);
 });
 builder.Services.AddSingleton<ICartService, CartService>();
-
->>>>>>> 59f47c27f62b877fd57cba1ead680fe0c44a27bf
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -54,7 +51,7 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
-app.MapIdentityApi<AppUser>();
+app.MapGroup("api").MapIdentityApi<AppUser>();
 try{
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;

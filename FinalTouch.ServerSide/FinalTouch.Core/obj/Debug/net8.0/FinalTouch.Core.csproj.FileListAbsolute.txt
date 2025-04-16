@@ -46,3 +46,4 @@ D:\Final Touch\FinalTouch.ServerSide\FinalTouch.Core\obj\Debug\net8.0\FinalTouch
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.Core\obj\Debug\net8.0\refint\FinalTouch.Core.dll
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.Core\obj\Debug\net8.0\FinalTouch.Core.pdb
 D:\Final Touch\FinalTouch.ServerSide\FinalTouch.Core\obj\Debug\net8.0\ref\FinalTouch.Core.dll
+D:\Courses\ITI\Graduation Project\Project\FinalTouch.ServerSide\FinalTouch.Core\obj\Debug\net8.0\FinalTouch.Core.csproj.AssemblyReference.cache

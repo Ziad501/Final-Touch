@@ -30,7 +30,7 @@ namespace FinalTouch.Api.Controllers
 		{
 			var result = await cartService.DeleteCartAsync(id);
 
-			if (!result) return BadRequest("Problem deleting cart");
+			if (!result) return BadRequest("Problem while deleting cart");
 
 			return Ok();
 		}

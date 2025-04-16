@@ -1,4 +1,5 @@
 using FinalTouch.Api.Middleware;
+using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
 using FinalTouch.InfraStructure.Services;
@@ -24,7 +25,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("https://localhost:4200") // Your Angular dev server
             .AllowAnyHeader()
             .AllowAnyMethod()
-            .AllowCredentials(); // Optional, if you're using cookies or auth headers
+            .AllowCredentials();
     });
 });
 builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
@@ -34,7 +35,8 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
     return ConnectionMultiplexer.Connect(configuration);
 });
 builder.Services.AddSingleton<ICartService, CartService>();
-
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -49,7 +51,7 @@ app.UseAuthorization();
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
-
+app.MapGroup("api").MapIdentityApi<AppUser>();
 try{
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;

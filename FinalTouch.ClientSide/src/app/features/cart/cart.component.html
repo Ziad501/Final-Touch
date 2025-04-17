@@ -1,14 +1,15 @@
 <section>
-  <div class="mx-auto max-w-screen-xl">
-    <div class="flex w-full items-start gap-6 mt-32">
-      @if (cartService.itemCount()) {
-        <div class="w-3/4">
-          @for (item of cartService.cart()?.items; track item.productId) {
-            <div>
-              <app-cart-item [item]="item"></app-cart-item>
-            </div>
-          }
-        </div>
+  @if (cartService.cart()?.items?.length!>0) {
+    <div class="mx-auto max-w-screen-xl">
+      <div class="flex w-full items-start gap-6 mt-32">
+        @if (cartService.itemCount()) {
+          <div class="w-3/4">
+            @for (item of cartService.cart()?.items; track item.productId) {
+              <div>
+                <app-cart-item [item]="item"></app-cart-item>
+              </div>
+            }
+          </div>
         } @else {
           <div class="w-full">
             <div class="h-[60vh] flex flex-col items-center justify-center text-center space-y-4">
@@ -17,13 +18,16 @@
                 Back to shopping
               </button>
             </div>
-        </div>
+          </div>
         }
-      @if (cartService.itemCount()){
-        <div class="w-1/4">
-          <app-order-summary></app-order-summary>
-        </div>
-    }
+        @if (cartService.itemCount()) {
+          <div class="w-1/4">
+            <app-order-summary></app-order-summary>
+          </div>
+        }
+      </div>
     </div>
-  </div>
+  } @else {
+    <app-empty-state></app-empty-state>
+  }
 </section>

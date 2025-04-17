@@ -1,6 +1,43 @@
 <section>
   @if (cartService.cart()?.items?.length!>0) {
+<<<<<<< HEAD
   <div class="flex w-full items-start gap-6 mt-32">
+=======
+<<<<<<< HEAD
+    <div class="mx-auto max-w-screen-xl">
+      <div class="flex w-full items-start gap-6 mt-32">
+        @if (cartService.itemCount()) {
+          <div class="w-3/4">
+            @for (item of cartService.cart()?.items; track item.productId) {
+              <div>
+                <app-cart-item [item]="item"></app-cart-item>
+              </div>
+            }
+          </div>
+        } @else {
+          <div class="w-full">
+            <div class="h-[60vh] flex flex-col items-center justify-center text-center space-y-4">
+              <h1 class="text-2xl font-semibold text-gray-700">There's no items in the cart.</h1>
+              <button routerLink="/shop" mat-flat-button color="primary" class="px-6 py-2 rounded-md">
+                Back to shopping
+              </button>
+            </div>
+          </div>
+        }
+        @if (cartService.itemCount()) {
+          <div class="w-1/4">
+            <app-order-summary></app-order-summary>
+          </div>
+        }
+      </div>
+    </div>
+  } @else {
+    <app-empty-state></app-empty-state>
+  }
+=======
+  <div class="mx-auto max-w-screen-xl">
+      <div class="flex w-full items-start gap-6 mt-32">
+>>>>>>> 6068c19871c6feab2b630034bc525d634d6ce4fb
         <div class="w-3/4">
           @for (item of cartService.cart()?.items; track item.productId) {
               <app-cart-item [item]="item"></app-cart-item>
@@ -15,4 +52,5 @@
     <app-empty-state></app-empty-state>
   }
 
+>>>>>>> 6acdbd963b256fc276ddccc9d3227d8ece62a1d7
 </section>

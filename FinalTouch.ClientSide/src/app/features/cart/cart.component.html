@@ -1,5 +1,6 @@
 <section>
   @if (cartService.cart()?.items?.length!>0) {
+<<<<<<< HEAD
     <div class="mx-auto max-w-screen-xl">
       <div class="flex w-full items-start gap-6 mt-32">
         @if (cartService.itemCount()) {
@@ -30,4 +31,24 @@
   } @else {
     <app-empty-state></app-empty-state>
   }
+=======
+  <div class="mx-auto max-w-screen-xl">
+      <div class="flex w-full items-start gap-6 mt-32">
+        <div class="w-3/4">
+          @for (item of cartService.cart()?.items; track item.productId) {
+            <div>
+              <app-cart-item [item]="item"></app-cart-item>
+            </div>
+          }
+        </div>
+        <div class="w-1/4">
+          <app-order-summary></app-order-summary>
+        </div>
+      </div>
+    </div>
+  }@else {
+    <app-empty-state></app-empty-state>
+  }
+
+>>>>>>> 6acdbd963b256fc276ddccc9d3227d8ece62a1d7
 </section>

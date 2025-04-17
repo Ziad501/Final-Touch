@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Text.Json;
 using FinalTouch.Core.Entities;
 
@@ -14,6 +15,19 @@ public class Seed
             var Products = JsonSerializer.Deserialize<List<Product>>(ProductsData);
             if( Products == null) return;
             context.Products.AddRange(Products);
+            await context.SaveChangesAsync();
+        }
+        if (!context.DeliveryMethods.Any())
+        {
+            var dmData = await File
+                .ReadAllTextAsync("../FinalTouch.InfraStructure/Data/SeedData/delivery.json");
+
+            var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
+
+            if (methods == null) return;
+
+            context.DeliveryMethods.AddRange(methods);
+
             await context.SaveChangesAsync();
         }
     }

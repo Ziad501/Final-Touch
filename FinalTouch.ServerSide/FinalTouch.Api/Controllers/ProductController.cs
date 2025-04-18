@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalTouch.Api.Controllers
 {
-    public class ProductController(IGenericRepository<Product> repo) : BaseApiController
+    public class ProductController(IUnitOfWork unit) : BaseApiController
     {
 
         [HttpGet]
@@ -15,13 +15,13 @@ namespace FinalTouch.Api.Controllers
             var spec = new ProductSpecification(specParams);
 
             
-			return await CreatePagedResult(repo, spec,specParams.PageIndex,specParams.PageSize);
+			return await CreatePagedResult(unit.Repository<Product>(), spec,specParams.PageIndex,specParams.PageSize);
             
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            Product? product = await repo.GetByIdAsync(id);
+            Product? product = await unit.Repository<Product>().GetByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -31,8 +31,8 @@ namespace FinalTouch.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProdcut(Product product)
         {
-            repo.Add(product);
-            if(await repo.SaveChangesAsync())
+            unit.Repository<Product>().Add(product);
+            if(await unit.Complete())
             {
                 return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
             }
@@ -45,21 +45,21 @@ namespace FinalTouch.Api.Controllers
             {
                 return BadRequest("cannot update product with this id");
             }
-            repo.Update(product);
-            if(await repo.SaveChangesAsync()) {return NoContent();}
+            unit.Repository<Product>().Update(product);
+            if(await unit.Complete()) {return NoContent();}
             
             return BadRequest("problem updating product");
         }
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
-            var product = await repo.GetByIdAsync(id);
+            var product = await unit.Repository<Product>().GetByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
-            repo.Delete(product);
-             if(await repo.SaveChangesAsync()) {return NoContent();}
+            unit.Repository<Product>().Delete(product);
+             if(await unit.Complete()) {return NoContent();}
 
             return BadRequest("problem deleting product");
         }
@@ -67,17 +67,17 @@ namespace FinalTouch.Api.Controllers
         public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
         {
             var spec = new TypeListSpec();
-            return Ok(await repo.ListAsync(spec));
-        }
+            return Ok(await unit.Repository<Product>().ListAsync(spec));
+        }   
         [HttpGet("brand")]
         public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
         {
             var spec = new BrandListSpec();
-            return Ok(await repo.ListAsync(spec));
+            return Ok(await unit.Repository<Product>().ListAsync(spec));
         }
         private bool ProductExists(int id)
         {
-            return repo.ProductExists(id);
+            return unit.Repository<Product>().ProductExists(id);
         }
     }
 }

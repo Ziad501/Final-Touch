@@ -1,6 +1,7 @@
 using System;
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalTouch.InfraStructure.Data;
 
@@ -29,7 +30,11 @@ public class SpecificationEvaluator<T> where T : BaseEntity
 		{
 			query = query.Skip(spec.Skip).Take(spec.Take);
 		}
-		return query;
+        query = spec.Includes.Aggregate(query ,(current,include) => current.Include(include));
+        query = spec.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
+
+
+        return query;
     }
     public static IQueryable<TResult> GetQuery<TSpec,TResult>(IQueryable<T> query, ISpecification<T,TResult> spec)
     {

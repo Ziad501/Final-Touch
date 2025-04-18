@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FinalTouch.Api.Controllers
 {
-    public class PaymentController(IPaymentService paymentService,IGenericRepository<DeliveryMethod> dmRepo) :BaseApiController
+    public class PaymentController(IPaymentService paymentService,IUnitOfWork unit) :BaseApiController
     {
         [Authorize]
         [HttpPost("{cartId}")]
@@ -22,7 +22,7 @@ namespace FinalTouch.Api.Controllers
         [HttpGet("delivery-methods")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
-            return Ok(await dmRepo.GetAllAsync());
+            return Ok(await unit.Repository<DeliveryMethod>().GetAllAsync());
         }
     
     }

@@ -16,6 +16,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
     {
         context.Products.Remove(product);
     }
+    
 
     public async Task<IReadOnlyList<Product>> GetAllProductsAsync(string? type,string? brand,string? sort)
     {

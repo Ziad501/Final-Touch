@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FinalTouch.InfraStructure.Services
 {
-    public class PaymentService(IConfiguration config, ICartService cartService, IGenericRepository<Core.Entities.Product> productRepo, IGenericRepository<DeliveryMethod> dmrRepo) : IPaymentService
+    public class PaymentService(IConfiguration config, ICartService cartService,IUnitOfWork unit) : IPaymentService
     {
         public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
         {
@@ -21,13 +21,13 @@ namespace FinalTouch.InfraStructure.Services
             var shippingPrice = 0m;
             if (cart.DeliveryMethodId.HasValue)
             {
-                var deliveryMethod = await dmrRepo.GetByIdAsync((int)cart.DeliveryMethodId);
+                var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
                 if (deliveryMethod == null) return null;
                 shippingPrice = deliveryMethod.Price;
             }
             foreach (var item in cart.Items)
             {
-                var productItem = await productRepo.GetByIdAsync(item.ProductId);
+                var productItem = await unit.Repository<Core.Entities.Product>().GetByIdAsync(item.ProductId);
                 if (productItem == null) return null;
                 if (item.Price != productItem.Price)
                 {

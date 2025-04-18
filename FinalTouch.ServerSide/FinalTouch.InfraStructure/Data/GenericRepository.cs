@@ -59,10 +59,10 @@ public class GenericRepository<T>(AppDbContext context) : IGenericRepository<T> 
         return context.Set<T>().Any(e => e.Id == id);
     }
 
-    public async Task<bool> SaveChangesAsync()
-    {
-        return await context.SaveChangesAsync() > 0;
-    }
+    //public async Task<bool> SaveChangesAsync()
+    //{
+    //    return await context.SaveChangesAsync() > 0;
+    //}
 
     public void Update(T entity)
     {

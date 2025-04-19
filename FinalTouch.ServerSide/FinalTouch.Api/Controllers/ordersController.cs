@@ -82,9 +82,9 @@ namespace FinalTouch.Api.Controllers
 
             var orders = await unit.Repository<Order>().ListAsync(spec);
 
-            //var ordersToReturn = orders.Select(o => o.ToDto()).ToList();
+            var ordersToReturn = orders.Select(o => o.ToDto()).ToList();
 
-            return Ok(orders);
+            return Ok(ordersToReturn);
         }
 
         [HttpGet("{id:int}")]

@@ -1,4 +1,5 @@
 using FinalTouch.Api.Middleware;
+using FinalTouch.Api.SignalR;
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
@@ -39,10 +40,12 @@ builder.Services.AddSingleton<ICartService, CartService>();
 builder.Services.AddAuthorization();
 builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+app.UseMiddleware<ExceptionMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -50,11 +53,14 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 app.UseCors("AllowAngularApp"); // Use the CORS policy
+
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseMiddleware<ExceptionMiddleware>();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<AppUser>();
+app.MapHub<NotificationHub>("/hub/notifications");
+
 try{
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;

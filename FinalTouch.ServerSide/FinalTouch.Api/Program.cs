@@ -4,6 +4,7 @@ using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.InfraStructure.Data;
 using FinalTouch.InfraStructure.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
 
@@ -38,9 +39,13 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(config =>
 });
 builder.Services.AddSingleton<ICartService, CartService>();
 builder.Services.AddAuthorization();
-builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentityApiEndpoints<AppUser>()
+    .AddRoles<IdentityRole>()
+	.AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddSignalR();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -65,8 +70,9 @@ try{
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
+    var userManager = services.GetRequiredService<UserManager<AppUser>>();
     await context.Database.MigrateAsync();
-    await Seed.SeedDataAsync(context);
+    await Seed.SeedDataAsync(context, userManager);
 }
 catch (Exception ex)
 {

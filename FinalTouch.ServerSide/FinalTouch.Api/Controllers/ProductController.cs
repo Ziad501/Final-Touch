@@ -2,6 +2,7 @@ using FinalTouch.Api.RequestHelpers;
 using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.Core.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalTouch.Api.Controllers
@@ -28,6 +29,7 @@ namespace FinalTouch.Api.Controllers
             }
             return product;
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProdcut(Product product)
         {
@@ -38,7 +40,9 @@ namespace FinalTouch.Api.Controllers
             }
             return BadRequest("problem creating product");
         }
-        [HttpPut("{id}")]
+
+		[Authorize(Roles = "Admin")]
+		[HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, Product product)
         {
             if(product.Id != id || !ProductExists(id))
@@ -50,7 +54,9 @@ namespace FinalTouch.Api.Controllers
             
             return BadRequest("problem updating product");
         }
-        [HttpDelete("{id}")]
+
+		[Authorize(Roles = "Admin")]
+		[HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
             var product = await unit.Repository<Product>().GetByIdAsync(id);

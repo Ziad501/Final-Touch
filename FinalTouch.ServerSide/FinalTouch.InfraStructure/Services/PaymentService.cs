@@ -11,11 +11,19 @@ using System.Threading.Tasks;
 
 namespace FinalTouch.InfraStructure.Services
 {
-    public class PaymentService(IConfiguration config, ICartService cartService,IUnitOfWork unit) : IPaymentService
+    public class PaymentService : IPaymentService
     {
-        public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
+		private readonly ICartService cartService;
+		private readonly IUnitOfWork unit;
+
+		public PaymentService(IConfiguration config, ICartService cartService, IUnitOfWork unit)
+		{
+			this.cartService = cartService;
+			this.unit = unit;
+			StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
+		}
+		public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
         {
-            StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
             var cart = await cartService.GetCartAsync(cartId);
             if (cart == null) return null;
             var shippingPrice = 0m;
@@ -64,5 +72,18 @@ namespace FinalTouch.InfraStructure.Services
 
 
         }
-    }
+
+		public async Task<string> RefundPayment(string paymentIntentId)
+		{
+			var refundOptions = new RefundCreateOptions
+			{
+				PaymentIntent = paymentIntentId
+			};
+
+			var refundService = new RefundService();
+			var result = await refundService.CreateAsync(refundOptions);
+
+			return result.Status;
+		}
+	}
 }

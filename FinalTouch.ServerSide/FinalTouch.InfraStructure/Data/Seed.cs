@@ -2,13 +2,27 @@ using System;
 using System.IO;
 using System.Text.Json;
 using FinalTouch.Core.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace FinalTouch.InfraStructure.Data;
 
 public class Seed
 {
-    public static async Task SeedDataAsync(AppDbContext context)
-    {
+
+	public static async Task SeedDataAsync(AppDbContext context, UserManager<AppUser> userManager)
+	{
+		if (!userManager.Users.Any(x => x.UserName == "AbdallahSoliman@test.com"))
+		{
+			var user = new AppUser
+			{
+				UserName = "admin@test.com",
+				Email = "admin@test.com",
+			};
+
+			await userManager.CreateAsync(user, "Graduation4*");
+			await userManager.AddToRoleAsync(user, "Admin");
+		}
+	
         if(!context.Products.Any())
         {
             var ProductsData = await File.ReadAllTextAsync("../FinalTouch.InfraStructure/Data/SeedData/products.json");

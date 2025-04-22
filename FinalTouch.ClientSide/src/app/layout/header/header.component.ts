@@ -35,6 +35,9 @@ export class HeaderComponent {
         this.router.navigateByUrl('/');
       }
     });
-    this.cartService.deleteCart()
+    if (this.cartService.cart()!=null) {
+      this.cartService.deleteCart();
+    }
   }
+  
 }

@@ -50,3 +50,44 @@
   border-radius: 0.5rem;
 }
 
+::ng-deep ng-select .ng-placeholder {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 1.05rem;
+  color: #7a6257; // اختياري لو عايز نفس اللون
+}
+
+::ng-deep ng-select .ng-value {
+  font-weight: bold;
+  color: #7a6257;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 1rem;
+}
+
+::ng-deep ng-select .ng-clear-wrapper {
+  top: 50%;
+  transform: translateY(30%);
+  right: 12px;
+  background-color: #7a6257;
+  border-radius: 50%;
+  padding: 2px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+::ng-deep ng-select .ng-clear-wrapper:hover {
+  background-color: #5E4D43;
+}
+
+::ng-deep ng-select .ng-clear {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}

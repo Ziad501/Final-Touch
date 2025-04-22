@@ -1,16 +1,25 @@
-<mat-card class="max-w-lg mx-auto mt-12 p-8 !bg-white">
+<mat-card class="max-w-lg mx-auto mt-12 p-8 bg-gradient-login text-[#1A2417]">
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="text-center mb-6">
-          <h1 class="text-3xl font-semibold text-primary">Login</h1>
-      </div>
-      <mat-form-field appearance="outline" class="w-full mb-4">
-          <mat-label>Email address</mat-label>
-          <input formControlName="email" type="email" placeholder="name@example.com" matInput />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="w-full mb-4">
-          <mat-label>Password</mat-label>
-          <input formControlName="password" type="password" placeholder="Password" matInput />
-      </mat-form-field>
-      <button mat-flat-button type="submit" class="w-full py-2">Sign in</button>
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-semibold text-[#5E6C58]">Login</h1>
+    </div>
+
+    <mat-form-field appearance="outline" class="w-full mb-4">
+      <mat-label>Email address</mat-label>
+      <input formControlName="email" type="email" placeholder="name@example.com" matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full mb-4">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" placeholder="Password" matInput />
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      type="submit"
+      class="w-full py-2 text-white"
+      style="background-color: #647c5a !important; color: #f4efe6 !important;">
+      Sign in
+    </button>
   </form>
 </mat-card>

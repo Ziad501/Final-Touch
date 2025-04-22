@@ -1,7 +1,7 @@
 <mat-card
   appearance="raised"
   routerLink="/shop/{{product.id}}"
-  class="product-card bg-[#FEF4EA] text-[#A38772] border border-[#ECDDCF] transition-colors"
+  class="product-card bg-[#FFFCF6] text-[#5E6C58] border border-[#ECDDCF] transition-colors"
 >
   <img src="{{product.imageUrl}}" alt="image of {{product.name}}" class="w-full h-75 object-cover rounded-t-xl"/>
 
@@ -13,7 +13,7 @@
   <mat-card-actions (click)="$event.stopPropagation()">
     <button
       mat-stroked-button
-      class="w-full text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+      class="w-full text-[#5E6C58] border-[#5E6C58] hover:bg-[#D9A189] hover:text-white transition-colors"
       (click)="cartService.addItemToCart(product)"
     >
       <mat-icon>add_shopping_cart</mat-icon>

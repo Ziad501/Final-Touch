@@ -1,24 +1,6 @@
-.custom-badge .mat-badge-content {
-  width: 24px;
-  height: 24px;
-  font-size:14px;
-  line-height: 24px;
-}
-
-.custom-badge .mat-icon {
-  font-size: 32px;
-  width: 32px;
-  height: 32px;
-}
-
-a{
-  &.active{
-    color: #D9A189;
-  }
-}
 .btn-user-menu {
   background: transparent !important;
-  color: #FEF4EA !important;
+  color: #a0b19a !important;
   border: none !important;
   box-shadow: none !important;
   transition: color 0.3s ease !important;
@@ -27,27 +9,26 @@ a{
   &:active,
   &:focus {
     background: transparent !important;
-    color: #fff !important;
+    color: #80a373 !important; // درجة أفتح من Soft Sage
   }
 
   mat-icon {
-    color: #FEF4EA !important;
+    color: #ABC8A2 !important;
   }
 }
 
-
 .btn-auth {
-  background-color: #977357 !important;
-  color: white !important;
+  background-color: #f4efe6 !important;
+  color: #5E6C58 !important;
   border: none !important;
-  padding: 0.4rem 1.2rem;
+  padding: 0.5rem 1.5rem;
   font-weight: 600;
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
-    background-color: #f3d2ad !important;
-    color: white !important;
+    background-color: #E8CBC0 !important;
+    color: #5E6C58 !important;
   }
 
   &:disabled {
@@ -56,3 +37,5 @@ a{
     cursor: not-allowed !important;
   }
 }
+
+

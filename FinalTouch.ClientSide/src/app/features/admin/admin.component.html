@@ -1,94 +1,8 @@
 <div class="min-h-screen bg-white text-[#7a6257]">
   <mat-tab-group class="bg-white custom-tab-group">
-    <mat-tab label="Orders">
-      <!-- العنوان والفيلتر -->
-      <div class="flex justify-between items-center mt-4 px-4 max-w-screen-2xl mx-auto">
-        <h2 class="text-2xl font-semibold">Customer orders</h2>
-        <mat-form-field appearance="outline" class="w-64">
-          <mat-label>Filter by status</mat-label>
-          <mat-select (selectionChange)="onFilterSelect($event)">
-            @for (status of statusOptions; track $index) {
-              <mat-option [value]="status">{{status}}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
-
-      <!-- الجدول -->
-      <div class="p-4">
-        <div class="mat-elevation-z8 rounded-lg overflow-hidden border border-[#ECDDCF]">
-          <table mat-table [dataSource]="dataSource" class="w-full text-[#7a6257] text-sm bg-white">
-
-            <!-- Column: No -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">No.</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.id}} </td>
-            </ng-container>
-
-            <!-- Column: Buyer email -->
-            <ng-container matColumnDef="buyerEmail">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Buyer email</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.buyerEmail}} </td>
-            </ng-container>
-
-            <!-- Column: Date -->
-            <ng-container matColumnDef="orderDate">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Date</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.orderDate | date: 'short'}} </td>
-            </ng-container>
-
-            <!-- Column: Total -->
-            <ng-container matColumnDef="total">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Total</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.total | currency}} </td>
-            </ng-container>
-
-            <!-- Column: Status -->
-            <ng-container matColumnDef="status">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Status</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.status}} </td>
-            </ng-container>
-
-            <!-- Column: Actions -->
-            <ng-container matColumnDef="action">
-              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Actions</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2">
-                <div class="flex gap-2 items-center">
-                  <button matTooltip="View" mat-icon-button routerLink="/orders/{{order.id}}">
-                    <mat-icon style="color: #A38772">visibility</mat-icon>
-                  </button>
-                  <button matTooltip="Refund"
-                          [disabled]="order.status === 'Refunded'"
-                          (click)="openConfirmDialog(order.id)"
-                          mat-icon-button>
-                    <mat-icon color="warn">undo</mat-icon>
-                  </button>
-                </div>
-              </td>
-            </ng-container>
-
-            <!-- Table rows -->
-            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b border-[#ECDDCF]"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-[#f9f5f2] transition"></tr>
-          </table>
-
-          <!-- Paginator -->
-          <mat-paginator
-            class="bg-white"
-            [pageSizeOptions]="[5, 10, 20]"
-            [length]="totalItems"
-            [pageSize]="orderParams.pageSize"
-            (page)="onPageChange($event)"
-            showFirstLastButtons
-          ></mat-paginator>
-        </div>
-      </div>
-    </mat-tab>
-
-    <!-- Tabs placeholders -->
     <mat-tab label="Product CRUD">
       <div class="max-w-7xl mx-auto mt-10 p-4 text-[#7a6257]">
-        <!-- زر الإضافة -->
+
         <div class="flex justify-end mb-4">
           <a
             routerLink="/products/add"
@@ -98,7 +12,6 @@
           </a>
         </div>
 
-        <!-- الجدول -->
         <div class="overflow-x-auto bg-white rounded-2xl shadow-lg border border-[#ECDDCF]">
           <table class="min-w-full divide-y divide-[#ECDDCF] text-sm">
             <thead class="bg-[#FAF3EF] text-[#7a6257] text-left">
@@ -119,13 +32,13 @@
                 <td class="px-6 py-3 text-center space-x-2">
                   <a
                     [routerLink]="['/products/edit', product.id]"
-                    class="inline-block bg-[#F4C767] hover:bg-[#e9b63a] text-white px-4 py-1 rounded-lg shadow text-sm"
+                    class="inline-block bg-[#5E6C58] hover:bg-[#4d5949] text-white px-4 py-1 rounded-lg shadow text-sm transition"
                   >
                     Edit
                   </a>
                   <a
                     [routerLink]="['/products/delete', product.id]"
-                    class="inline-block bg-[#D77474] hover:bg-[#c35151] text-white px-4 py-1 rounded-lg shadow text-sm"
+                    class="inline-block bg-[#B55C59] hover:bg-[#9c4947] text-white px-4 py-1 rounded-lg shadow text-sm transition"
                   >
                     Delete
                   </a>
@@ -137,5 +50,87 @@
       </div>
 
     </mat-tab>
+    <mat-tab label="Orders">
+
+      <div class="flex justify-between items-center mt-4 px-4 max-w-screen-2xl mx-auto">
+        <h2 class="text-2xl font-semibold">Customer orders</h2>
+        <mat-form-field appearance="outline" class="w-64">
+          <mat-label>Filter by status</mat-label>
+          <mat-select (selectionChange)="onFilterSelect($event)">
+            @for (status of statusOptions; track $index) {
+              <mat-option [value]="status">{{status}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="p-4">
+        <div class="mat-elevation-z8 rounded-lg overflow-hidden border border-[#ECDDCF]">
+          <table mat-table [dataSource]="dataSource" class="w-full text-[#7a6257] text-sm bg-white">
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">No.</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="buyerEmail">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Buyer email</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.buyerEmail}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="orderDate">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Date</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.orderDate | date: 'short'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Total</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.total | currency}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Status</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Actions</th>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2">
+                <div class="flex gap-2 items-center">
+                  <button matTooltip="View" mat-icon-button routerLink="/orders/{{order.id}}">
+                    <mat-icon style="color: #A38772">visibility</mat-icon>
+                  </button>
+                  <button matTooltip="Refund"
+                          [disabled]="order.status === 'Refunded'"
+                          (click)="openConfirmDialog(order.id)"
+                          mat-icon-button>
+                    <mat-icon color="warn">undo</mat-icon>
+                  </button>
+                </div>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns" class="border-b border-[#ECDDCF]"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-[#f9f5f2] transition"></tr>
+          </table>
+
+
+          <mat-paginator
+            class="bg-white"
+            [pageSizeOptions]="[5, 10, 20]"
+            [length]="totalItems"
+            [pageSize]="orderParams.pageSize"
+            (page)="onPageChange($event)"
+            showFirstLastButtons
+          ></mat-paginator>
+        </div>
+      </div>
+    </mat-tab>
+
+
+
   </mat-tab-group>
 </div>

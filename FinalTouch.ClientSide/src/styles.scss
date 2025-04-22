@@ -21,8 +21,8 @@ $customTheme: mat.define-theme();
 
     &:hover {
       color: white !important;
-      border-color: #D9A189 !important;
-      background-color: #D9A189 !important;
+      border-color: #5E6C58 !important;
+      background-color: #5E6C58 !important;
     }
 
     mat-icon {
@@ -33,12 +33,12 @@ $customTheme: mat.define-theme();
   // ✅ كلاس مخصص للزر الرئيسي
   .btn-primary {
     background-color: #A38772 !important;
-    color: white !important;
+    color: #FFFCF6 !important;
     border: none !important;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #D9A189 !important;
+      background-color: #5E6C58 !important;
     }
 
     mat-icon {
@@ -63,7 +63,7 @@ $customTheme: mat.define-theme();
 }
 
 .text-primary {
-  color: #A38772;
+  color: #5E6C58;
 }
 
 button.match-input-height {

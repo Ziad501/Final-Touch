@@ -10,7 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-custmize',
-  imports: [ReactiveFormsModule, CommonModule, RouterLink,NgSelectModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, NgSelectModule],
   templateUrl: './custmize.component.html',
   styleUrl: './custmize.component.scss'
 })
@@ -22,12 +22,14 @@ export class CustmizeComponent implements OnInit {
   shopParams = new ShopParams();
   products?: Product[];
 
+
   form = this.fb.group({
-    type: ['', Validators.required],
-    length: [''],
-    width: [''],
-    height: [''],
-    layers: [''],
+    type: [null, Validators.required],
+    length: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+    width: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+    height: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+    layers: ['', [Validators.pattern(/^\d+$/)]],
+    color: ['', Validators.required],
     area: [{ value: 0, disabled: true }],
     quantity: [0, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]],
     pricePerUnit: [{ value: 0, disabled: true }],
@@ -35,6 +37,15 @@ export class CustmizeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    // استرجاع الداتا المحفوظة
+    const savedForm = localStorage.getItem('customizeForm');
+    const savedProduct = localStorage.getItem('customizeSelectedProduct');
+
+    if (savedForm && savedProduct) {
+      this.form.patchValue(JSON.parse(savedForm));
+      this.selectedProduct = JSON.parse(savedProduct);
+    }
+
     this.getProducts();
 
     this.form.valueChanges.subscribe(values => {
@@ -79,6 +90,13 @@ export class CustmizeComponent implements OnInit {
 
       const totalPrice = quantity * pricePerUnit;
 
+      // حفظ البيانات في localStorage
+      const formData = { ...values, area, pricePerUnit, totalPrice };
+      localStorage.setItem('customizeForm', JSON.stringify(formData));
+      if (this.selectedProduct) {
+        localStorage.setItem('customizeSelectedProduct', JSON.stringify(this.selectedProduct));
+      }
+
       this.form.patchValue({
         area,
         quantity,
@@ -109,20 +127,25 @@ export class CustmizeComponent implements OnInit {
 
     const quantity = this.form.get('quantity')?.value ?? 1;
     this.cartService.addItemToCart(this.selectedProduct, quantity);
+
+    // امسح البيانات بعد الإضافة للكارت
     this.clearForm();
   }
 
   clearForm() {
-    const product = this.selectedProduct;
+    this.selectedProduct = undefined;
+    localStorage.removeItem('customizeForm');
+    localStorage.removeItem('customizeSelectedProduct');
+
     this.form.reset({
-      type: product ? String(product.id) : '',
+      type: null,
       length: '',
       width: '',
       height: '',
       layers: '',
       area: 0,
       quantity: 0,
-      pricePerUnit: product?.price ?? 0,
+      pricePerUnit: 0,
       totalPrice: 0
     });
   }
@@ -132,5 +155,16 @@ export class CustmizeComponent implements OnInit {
     const layers = Number(layersRaw);
     return this.selectedProduct?.type === 'Boards' &&
       (!layersRaw || isNaN(layers) || layers <= 0 || !Number.isInteger(layers));
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.form.get(controlName);
+    if (!control || !control.errors) return '';
+
+    if (control.hasError('required')) return `${controlName} is required`;
+    if (control.hasError('pattern')) return `${controlName} must be a valid number`;
+    if (control.hasError('min')) return `${controlName} must be greater than 0`;
+
+    return '';
   }
 }

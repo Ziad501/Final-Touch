@@ -13,6 +13,46 @@
 
 a{
   &.active{
-    color: #7d00fa;
+    color: #D9A189;
+  }
+}
+.btn-user-menu {
+  background: transparent !important;
+  color: #FEF4EA !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: color 0.3s ease !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent !important;
+    color: #fff !important;
+  }
+
+  mat-icon {
+    color: #FEF4EA !important;
+  }
+}
+
+
+.btn-auth {
+  background-color: #977357 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.4rem 1.2rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #f3d2ad !important;
+    color: white !important;
+  }
+
+  &:disabled {
+    background-color: #d1d5db !important;
+    color: #9ca3af !important;
+    cursor: not-allowed !important;
   }
 }

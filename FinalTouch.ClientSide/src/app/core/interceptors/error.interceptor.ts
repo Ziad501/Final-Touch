@@ -25,7 +25,7 @@ return next(req).pipe(
     }
 
     if (err.status === 401) {
-      snackbar.error(err.error.title || err.error);
+      snackbar.error(`Check Email or password (Error ${err.error.status})` || err.error);
     }
     if (err.status === 403) {
       snackbar.error('Forbidden');

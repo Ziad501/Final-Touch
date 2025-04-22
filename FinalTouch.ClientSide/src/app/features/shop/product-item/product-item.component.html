@@ -1,11 +1,21 @@
-<mat-card appearance="raised" routerLink="/shop/{{product.id}}" class="product-card">
-  <img src="{{product.imageUrl}}" alt="image of {{product.name}}"/>
+<mat-card
+  appearance="raised"
+  routerLink="/shop/{{product.id}}"
+  class="product-card bg-[#FEF4EA] text-[#A38772] border border-[#ECDDCF] transition-colors"
+>
+  <img src="{{product.imageUrl}}" alt="image of {{product.name}}" class="w-full h-75 object-cover rounded-t-xl"/>
+
   <mat-card-content class="mt-2">
     <h2 class="text-sm font-semibold uppercase">{{product.name}}</h2>
-    <p class="font-light">{{product.price |currency}}<p>
+    <p class="font-light">{{product.price | currency}}</p>
   </mat-card-content>
+
   <mat-card-actions (click)="$event.stopPropagation()">
-    <button mat-stroked-button class="w-full" (click)="cartService.addItemToCart(product)">
+    <button
+      mat-stroked-button
+      class="w-full text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+      (click)="cartService.addItemToCart(product)"
+    >
       <mat-icon>add_shopping_cart</mat-icon>
       Add to cart
     </button>

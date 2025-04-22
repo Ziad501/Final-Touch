@@ -41,7 +41,7 @@ export class ShopComponent implements OnInit {
     { name: 'Price: High to Low', value: 'priceDesc' }
   ];
   shopParams = new ShopParams();
-  pageSizeOptions = [5, 10,15, 20];
+  pageSizeOptions = [5,10,20,40];
 
   title = 'FinalTouch';
   ngOnInit(): void {

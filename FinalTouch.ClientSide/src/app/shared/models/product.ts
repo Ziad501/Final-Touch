@@ -7,4 +7,7 @@ export type Product = {
   type: string;
   brand: string;
   quantityInStock: number;
+  length: number;
+  width: number;
+  area: number;
 }

@@ -1,0 +1,91 @@
+<div class="flex justify-center items-start mt-10">
+  <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8 text-[#7a6257]">
+    <h2 class="text-2xl font-bold text-center text-[#A38772] mb-6">Add New Product</h2>
+
+    <form (ngSubmit)="onSubmit()" class="space-y-5" #productForm="ngForm">
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Product Name</label>
+        <input type="text" [(ngModel)]="product.name" name="name" required
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter product name"
+          #name="ngModel" pattern="^[A-Za-z].*" />
+        <span *ngIf="name.invalid && name.touched" class="text-red-600 text-sm">
+          Product name is required and must start with a letter.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Description</label>
+        <textarea [(ngModel)]="product.description" name="description" rows="3" required
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter product description"
+          #description="ngModel"></textarea>
+        <span *ngIf="description.invalid && description.touched" class="text-red-600 text-sm">
+          Description is required.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Image</label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*"
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]" />
+        <span *ngIf="fileError" class="text-red-600 text-sm">
+          {{ fileError }}
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Price</label>
+        <input type="number" [(ngModel)]="product.price" name="price" required min="0"
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter price"
+          #price="ngModel" />
+        <span *ngIf="price.invalid && price.touched" class="text-red-600 text-sm">
+          Price is required and must be a non-negative number.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Quantity in Stock</label>
+        <input type="number" [(ngModel)]="product.quantityInStock" name="quantityInStock" required min="0"
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter quantity in stock"
+          #quantity="ngModel" />
+        <span *ngIf="quantity.invalid && quantity.touched" class="text-red-600 text-sm">
+          Quantity is required and must be a non-negative number.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Brand</label>
+        <input type="text" [(ngModel)]="product.brand" name="brand" required
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter product brand"
+          #brand="ngModel" pattern="^[A-Za-z]+$" />
+        <span *ngIf="brand.invalid && brand.touched" class="text-red-600 text-sm">
+          Brand is required and must contain only letters.
+        </span>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-[#A38772] mb-1">Type</label>
+        <input type="text" [(ngModel)]="product.type" name="type" required
+          class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
+          placeholder="Enter product type"
+          #type="ngModel" pattern="^[A-Za-z]+$" />
+        <span *ngIf="type.invalid && type.touched" class="text-red-600 text-sm">
+          Type is required and must contain only letters.
+        </span>
+      </div>
+
+      <div class="text-center pt-4">
+        <button type="submit" [disabled]="productForm.invalid"
+          class="px-6 py-2 bg-[#A38772] text-white font-semibold rounded-xl shadow hover:bg-[#D9A189] transition">
+          Add Product
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

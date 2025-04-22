@@ -35,5 +35,6 @@ export class HeaderComponent {
         this.router.navigateByUrl('/');
       }
     });
+    this.cartService.deleteCart()
   }
 }

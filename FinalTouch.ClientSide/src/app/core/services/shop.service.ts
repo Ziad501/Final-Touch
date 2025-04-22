@@ -55,4 +55,16 @@ export class ShopService {
     });
   }
 
+  addProduct(product: Product) {
+    return this.http.post<Product>(this.baseUrl + 'Product', product);
+  }
+
+  updateProduct(id: number, product: Product) {
+    return this.http.put<Product>(this.baseUrl + 'Product/' + id, product);
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete(this.baseUrl + 'Product/' + id);
+  }
+
 }

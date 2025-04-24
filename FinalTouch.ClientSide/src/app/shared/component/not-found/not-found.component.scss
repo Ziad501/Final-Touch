@@ -1,3 +1,11 @@
 .icon-display{
   transform: scale(3);
 }
+.btn-back{
+  background-color: #031d2e !important;
+  color: white !important;
+
+  &:hover {
+    background-color: #e27b53 !important;
+  }
+}

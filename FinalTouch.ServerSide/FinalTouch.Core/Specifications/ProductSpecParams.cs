@@ -6,21 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinalTouch.Core.Specifications
 {
-    public class ProductSpecParams
-    {
-		private const int MaxPageSize = 50;
-		public int PageIndex { get; set; } = 1;
+    public class ProductSpecParams : PagingParams
+	{
 
 		private List<string> _brands = [];
-
-		private int _pageSize = 6;
-
-		public int PageSize
-		{
-			get => _pageSize;
-			set => _pageSize = (value > MaxPageSize) ? MaxPageSize : value;
-		}
-
 		public List<string> Brands
 		{
 			get { return _brands; }

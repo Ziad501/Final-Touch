@@ -12,6 +12,7 @@ import { ShopParams } from '../../shared/models/shopparams';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-shop',
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     MatListOption,
     MatMenuTrigger,
     MatPaginator,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
@@ -41,7 +43,7 @@ export class ShopComponent implements OnInit {
     { name: 'Price: High to Low', value: 'priceDesc' }
   ];
   shopParams = new ShopParams();
-  pageSizeOptions = [5, 10,15, 20];
+  pageSizeOptions = [5,10,20,50,100];
 
   title = 'FinalTouch';
   ngOnInit(): void {
@@ -101,4 +103,9 @@ export class ShopComponent implements OnInit {
       }
     })
   }
+  clearSearch() {
+    this.shopParams.search = '';
+    this.getProducts();
+  }
+
 }

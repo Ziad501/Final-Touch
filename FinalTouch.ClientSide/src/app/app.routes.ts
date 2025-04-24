@@ -14,12 +14,31 @@ import { CheckoutSuccessComponent } from './features/checkout/checkout-success/c
 import { OrderComponent } from './features/orders/order/order.component';
 import { OrderDetailedComponent } from './features/orders/order-detailed/order-detailed.component';
 import { orderCompleteGuard } from './core/guards/order-complete.guard';
+import { AdminComponent } from './features/admin/admin.component';
+import { adminGuard } from './core/guards/admin.guard';
+import { ProductAddComponent } from './features/admin/product-add/product-add.component';
+import { ProductDeleteComponent } from './features/admin/product-delete/product-delete.component';
+import { ProductEditComponent } from './features/admin/product-edit/product-edit.component';
+import { CustmizeComponent } from './features/custmize/custmize.component';
 
 export const routes: Routes = [
   {path:'', component: HomeComponent },
   {path:'shop',component:ShopComponent},
   {path:'shop/:id', component: ProductDetailsComponent },
-  {path:'Cart', component: CartComponent },
+  { path: 'Cart', component: CartComponent },
+  { path: 'custmize', component: CustmizeComponent },
+  {
+    path: 'products/add',
+    component: ProductAddComponent,canActivate: [authGuard]
+  },
+  {
+    path: 'products/edit/:id',
+    component: ProductEditComponent,canActivate: [authGuard]
+  },
+  {
+    path: 'products/delete/:id',
+    component: ProductDeleteComponent,canActivate: [authGuard]
+  },
   {path:'checkout', component: CheckoutComponent, canActivate: [authGuard] },
   {path:'checkout/success', component: CheckoutSuccessComponent,
     canActivate: [authGuard,orderCompleteGuard] },
@@ -30,5 +49,6 @@ export const routes: Routes = [
   {path:'test-error', component: TestErrorComponent },
   {path:'not-found',component:NotFoundComponent},
   {path:'server-error',component:ServerErrorComponent},
+  {path:'admin',component:AdminComponent,canActivate: [authGuard, adminGuard] },
   {path:'**',redirectTo:'not-found',pathMatch:'full'},
 ];

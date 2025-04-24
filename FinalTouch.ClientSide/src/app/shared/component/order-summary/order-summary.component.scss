@@ -1,0 +1,12 @@
+::ng-deep .checkout-button {
+  background-color: #031d2e !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::ng-deep .checkout-button:hover {
+  background-color: #e27b53 !important;
+  color: white !important;
+}

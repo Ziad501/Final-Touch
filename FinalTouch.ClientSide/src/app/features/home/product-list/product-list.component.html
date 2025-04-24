@@ -1,0 +1,30 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+  <div *ngFor="let product of products" class="bg-white rounded-xl shadow-md overflow-hidden">
+
+    <!-- الصورة كـ رابط للصفحة -->
+    <a [routerLink]="['/shop', product.id]">
+      <img [src]="product.imageUrl" [alt]="product.name"
+          class="w-full h-56 object-contain p-4 hover:scale-105 transition-transform duration-300">
+    </a>
+
+    <div class="p-4">
+      <p class="text-[#bb6644] text-sm font-semibold mb-1">{{ product.brand }}</p>
+
+      <!-- الاسم كـ رابط للصفحة -->
+      <a [routerLink]="['/shop', product.id]">
+        <h3 class="font-bold text-md mb-2 truncate hover:text-[#e27b53] transition-colors duration-300">
+          {{ product.name }}
+        </h3>
+      </a>
+
+      <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+        <span>{{ product.price |currency:'EGP':'symbol':'1.2-2'  }} </span>
+      </div>
+
+      <!-- زرار إضافة للسلة -->
+      <button class="custom-add-btn" (click)="addToCart(product)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

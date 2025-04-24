@@ -1,0 +1,103 @@
+::ng-deep ng-select {
+  background-color: white !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  min-height: 42px;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+::ng-deep ng-select .ng-select-container {
+  background-color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep ng-dropdown-panel {
+  background-color: white !important;
+  z-index: 9999 !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  margin-top: 2px;
+  border-radius: 0.5rem;
+}
+
+::ng-deep ng-select .ng-arrow-wrapper {
+  color: #555 !important;
+}
+
+::ng-deep ng-select {
+  display: block;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  min-height: 45px;
+  font-size: 14px;
+}
+
+::ng-deep ng-dropdown-panel {
+  position: absolute !important;
+  z-index: 9999 !important;
+  max-height: 400px !important;
+  overflow-y: auto;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+::ng-deep ng-select .ng-placeholder {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 1.05rem;
+  color: #7a6257;
+}
+
+::ng-deep ng-select .ng-value {
+  font-weight: bold;
+  color: #7a6257;
+  text-align: center;
+  padding-top: 3px;
+  font-size: 1rem;
+}
+
+::ng-deep ng-select .ng-clear-wrapper {
+  top: 50%;
+  transform: translateY(30%);
+  right: 12px;
+  background-color: #7a6257;
+  border-radius: 50%;
+  padding: 2px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+::ng-deep ng-select .ng-clear-wrapper:hover {
+  background-color: #5E4D43;
+}
+
+::ng-deep ng-select .ng-clear {
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+:host ::ng-deep .ng-select .ng-input input {
+  direction: ltr;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #7a6257;
+  font-family: inherit;
+  padding: 3px 6px;
+}

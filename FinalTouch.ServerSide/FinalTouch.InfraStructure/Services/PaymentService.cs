@@ -1,33 +1,35 @@
 ﻿using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Stripe;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalTouch.InfraStructure.Services
 {
-    public class PaymentService(IConfiguration config, ICartService cartService,IUnitOfWork unit) : IPaymentService
+    public class PaymentService : IPaymentService
     {
-        public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
+		private readonly ICartService cartService;
+		private readonly IUnitOfWork unit;
+
+		public PaymentService(IConfiguration config, ICartService cartService, IUnitOfWork unit)
+		{
+			this.cartService = cartService;
+			this.unit = unit;
+			StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
+		}
+		public async Task<ShoppingCart?> CreateOrUpdatePaymentIntent(string cartId)
         {
-            StripeConfiguration.ApiKey = config["StripeSettings:SecretKey"];
             var cart = await cartService.GetCartAsync(cartId);
             if (cart == null) return null;
             var shippingPrice = 0m;
             if (cart.DeliveryMethodId.HasValue)
             {
-                var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
+                var deliveryMethod = await unit.QueryRepository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
                 if (deliveryMethod == null) return null;
                 shippingPrice = deliveryMethod.Price;
             }
             foreach (var item in cart.Items)
             {
-                var productItem = await unit.Repository<Core.Entities.Product>().GetByIdAsync(item.ProductId);
+                var productItem = await unit.QueryRepository<Core.Entities.Product>().GetByIdAsync(item.ProductId);
                 if (productItem == null) return null;
                 if (item.Price != productItem.Price)
                 {
@@ -64,5 +66,18 @@ namespace FinalTouch.InfraStructure.Services
 
 
         }
-    }
+
+		public async Task<string> RefundPayment(string paymentIntentId)
+		{
+			var refundOptions = new RefundCreateOptions
+			{
+				PaymentIntent = paymentIntentId
+			};
+
+			var refundService = new RefundService();
+			var result = await refundService.CreateAsync(refundOptions);
+
+			return result.Status;
+		}
+	}
 }

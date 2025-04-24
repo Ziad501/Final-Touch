@@ -8,7 +8,7 @@ import { CurrencyPipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-order-summary',
-  imports: [RouterLink,MatButton,MatFormField,MatLabel,MatInput,CurrencyPipe],
+  imports: [RouterLink,MatButton,CurrencyPipe],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.scss'
 })

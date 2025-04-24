@@ -43,8 +43,9 @@ export class ShopService {
 
   getBrands() {
     if (this.brands.length > 0) return;
-    return this.http.get<string[]>(this.baseUrl + 'Product/brand').subscribe({
-      next: response => this.brands = response
+    this.http.get<string[]>(this.baseUrl + 'Product/brand').subscribe({
+      next: response => this.brands = response,
+      error: err => console.error(err)
     });
   }
 
@@ -53,6 +54,18 @@ export class ShopService {
     return this.http.get<string[]>(this.baseUrl + 'Product/type').subscribe({
       next: response => this.types = response
     });
+  }
+
+  addProduct(product: Product) {
+    return this.http.post<Product>(this.baseUrl + 'Product', product);
+  }
+
+  updateProduct(id: number, product: Product) {
+    return this.http.put<Product>(this.baseUrl + 'Product/' + id, product);
+  }
+
+  deleteProduct(id: number) {
+    return this.http.delete(this.baseUrl + 'Product/' + id);
   }
 
 }

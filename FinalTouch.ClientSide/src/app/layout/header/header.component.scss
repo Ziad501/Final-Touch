@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Add this to your component's SCSS file */
 
 :host ::ng-deep {
@@ -79,5 +80,46 @@ header {
     margin: 0 !important;         // يتأكد إن مفيش margin مسبب فراغ
     padding: 0 !important;        // يتأكد إن مفيش padding خارجي
     background: transparent !important; // في حالة الخلفية البيضاء من panel نفسه
+=======
+.btn-user-menu {
+  background: transparent !important;
+  color: #a0b19a !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: color 0.3s ease !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: transparent !important;
+    color: #80a373 !important; // درجة أفتح من Soft Sage
+  }
+
+  mat-icon {
+    color: #ABC8A2 !important;
   }
 }
+
+.btn-auth {
+  background-color: #f4efe6 !important;
+  color: #5E6C58 !important;
+  border: none !important;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: #E8CBC0 !important;
+    color: #5E6C58 !important;
+  }
+
+  &:disabled {
+    background-color: #d1d5db !important;
+    color: #9ca3af !important;
+    cursor: not-allowed !important;
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
+  }
+}
+
+

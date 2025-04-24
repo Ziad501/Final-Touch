@@ -21,8 +21,13 @@ $customTheme: mat.define-theme();
 
     &:hover {
       color: white !important;
+<<<<<<< HEAD
       border-color: #e27b53 !important;
       background-color: #e27b53 !important;
+=======
+      border-color: #5E6C58 !important;
+      background-color: #5E6C58 !important;
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     }
 
     mat-icon {
@@ -32,13 +37,21 @@ $customTheme: mat.define-theme();
 
   // ✅ كلاس مخصص للزر الرئيسي
   .btn-primary {
+<<<<<<< HEAD
     background-color: #031d2e !important;
+=======
+    background-color: #A38772 !important;
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     color: #FFFCF6 !important;
     border: none !important;
     transition: background-color 0.3s ease;
 
     &:hover {
+<<<<<<< HEAD
       background-color: #e27b53 !important;
+=======
+      background-color: #5E6C58 !important;
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     }
 
     mat-icon {

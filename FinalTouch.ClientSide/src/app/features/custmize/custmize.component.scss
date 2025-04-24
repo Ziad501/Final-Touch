@@ -55,7 +55,11 @@
   text-align: center;
   padding-top: 3px;
   font-size: 1.05rem;
+<<<<<<< HEAD
   color: #7a6257;
+=======
+  color: #7a6257; // اختياري لو عايز نفس اللون
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
 }
 
 ::ng-deep ng-select .ng-value {
@@ -91,6 +95,7 @@
   font-size: 12px;
   line-height: 1;
 }
+<<<<<<< HEAD
 
 :host ::ng-deep .ng-select .ng-input input {
   direction: ltr;
@@ -101,3 +106,5 @@
   font-family: inherit;
   padding: 3px 6px;
 }
+=======
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56

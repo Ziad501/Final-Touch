@@ -10,7 +10,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 @Component({
   selector: 'app-custmize',
+<<<<<<< HEAD
   standalone: true,
+=======
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
   imports: [ReactiveFormsModule, CommonModule, RouterLink, NgSelectModule],
   templateUrl: './custmize.component.html',
   styleUrl: './custmize.component.scss'
@@ -23,11 +26,18 @@ export class CustmizeComponent implements OnInit {
   shopParams = new ShopParams();
   products?: Product[];
 
+
   form = this.fb.group({
     type: [null, Validators.required],
+<<<<<<< HEAD
     length: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
     width: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
     height: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
+=======
+    length: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+    width: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+    height: ['', [Validators.pattern(/^\d*\.?\d+$/)]],
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     layers: ['', [Validators.pattern(/^\d+$/)]],
     color: ['', Validators.required],
     area: [{ value: 0, disabled: true }],
@@ -37,17 +47,26 @@ export class CustmizeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+<<<<<<< HEAD
     const savedForm = sessionStorage.getItem('customizeForm');
     const savedProduct = sessionStorage.getItem('customizeSelectedProduct');
+=======
+    // استرجاع الداتا المحفوظة
+    const savedForm = localStorage.getItem('customizeForm');
+    const savedProduct = localStorage.getItem('customizeSelectedProduct');
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
 
     if (savedForm && savedProduct) {
       this.form.patchValue(JSON.parse(savedForm));
       this.selectedProduct = JSON.parse(savedProduct);
     }
 
+<<<<<<< HEAD
     sessionStorage.removeItem('customizeForm');
     sessionStorage.removeItem('customizeSelectedProduct');
 
+=======
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     this.getProducts();
 
     this.form.valueChanges.subscribe(values => {
@@ -94,10 +113,18 @@ export class CustmizeComponent implements OnInit {
 
       const totalPrice = quantity * pricePerUnit;
 
+<<<<<<< HEAD
       const formData = { ...values, area, pricePerUnit, totalPrice };
       sessionStorage.setItem('customizeForm', JSON.stringify(formData));
       if (this.selectedProduct) {
         sessionStorage.setItem('customizeSelectedProduct', JSON.stringify(this.selectedProduct));
+=======
+      // حفظ البيانات في localStorage
+      const formData = { ...values, area, pricePerUnit, totalPrice };
+      localStorage.setItem('customizeForm', JSON.stringify(formData));
+      if (this.selectedProduct) {
+        localStorage.setItem('customizeSelectedProduct', JSON.stringify(this.selectedProduct));
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
       }
 
       this.form.patchValue({
@@ -129,13 +156,21 @@ export class CustmizeComponent implements OnInit {
     if (!this.selectedProduct) return;
     const quantity = this.form.get('quantity')?.value ?? 1;
     this.cartService.addItemToCart(this.selectedProduct, quantity);
+
+    // امسح البيانات بعد الإضافة للكارت
     this.clearForm();
   }
 
   clearForm() {
     this.selectedProduct = undefined;
+<<<<<<< HEAD
     sessionStorage.removeItem('customizeForm');
     sessionStorage.removeItem('customizeSelectedProduct');
+=======
+    localStorage.removeItem('customizeForm');
+    localStorage.removeItem('customizeSelectedProduct');
+
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     this.form.reset({
       type: null,
       length: '',
@@ -176,9 +211,17 @@ export class CustmizeComponent implements OnInit {
   getErrorMessage(controlName: string): string {
     const control = this.form.get(controlName);
     if (!control || !control.errors) return '';
+<<<<<<< HEAD
     if (control.hasError('required')) return `${controlName} is required`;
     if (control.hasError('pattern')) return `${controlName} must be a valid number`;
     if (control.hasError('min')) return `${controlName} must be greater than 0`;
+=======
+
+    if (control.hasError('required')) return `${controlName} is required`;
+    if (control.hasError('pattern')) return `${controlName} must be a valid number`;
+    if (control.hasError('min')) return `${controlName} must be greater than 0`;
+
+>>>>>>> f3249261a8a3aa72489311ffee50df2c9c629c56
     return '';
   }
 }

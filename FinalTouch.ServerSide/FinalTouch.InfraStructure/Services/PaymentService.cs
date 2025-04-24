@@ -1,13 +1,7 @@
 ﻿using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using Stripe;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinalTouch.InfraStructure.Services
 {
@@ -29,13 +23,13 @@ namespace FinalTouch.InfraStructure.Services
             var shippingPrice = 0m;
             if (cart.DeliveryMethodId.HasValue)
             {
-                var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
+                var deliveryMethod = await unit.QueryRepository<DeliveryMethod>().GetByIdAsync((int)cart.DeliveryMethodId);
                 if (deliveryMethod == null) return null;
                 shippingPrice = deliveryMethod.Price;
             }
             foreach (var item in cart.Items)
             {
-                var productItem = await unit.Repository<Core.Entities.Product>().GetByIdAsync(item.ProductId);
+                var productItem = await unit.QueryRepository<Core.Entities.Product>().GetByIdAsync(item.ProductId);
                 if (productItem == null) return null;
                 if (item.Price != productItem.Price)
                 {

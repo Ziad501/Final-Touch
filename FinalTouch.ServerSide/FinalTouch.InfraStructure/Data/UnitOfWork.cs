@@ -1,39 +1,52 @@
 ﻿using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FinalTouch.InfraStructure.Data
+namespace FinalTouch.InfraStructure.Data;
+
+public class UnitOfWork : IUnitOfWork
 {
-    public class UnitOfWork(AppDbContext context) : IUnitOfWork
+    private readonly AppDbContext _context;
+    private readonly ConcurrentDictionary<string, object> _commands = new();
+    private readonly ConcurrentDictionary<string, object> _queries = new();
+
+    public UnitOfWork(AppDbContext context)
     {
-        private readonly ConcurrentDictionary<string, object> _repositories = new();
+        _context = context;
+    }
 
-        public async Task<bool> Complete()
+    public IProductCommandRepository<TEntity> CommandRepository<TEntity>() where TEntity : BaseEntity
+    {
+        var key = typeof(TEntity).FullName!;
+
+        return (IProductCommandRepository<TEntity>)_commands.GetOrAdd(key, _ =>
         {
-            return await context.SaveChangesAsync() > 0;
-        }
+            var repoType = typeof(ProductCommandRepository<>).MakeGenericType(typeof(TEntity));
+            return Activator.CreateInstance(repoType, _context)
+                   ?? throw new InvalidOperationException($"Could not create command repo for {key}");
+        });
+    }
 
-        public void Dispose()
+    public IProductQueryRepository<TEntity> QueryRepository<TEntity>() where TEntity : BaseEntity
+    {
+        var key = typeof(TEntity).FullName!;
+
+        return (IProductQueryRepository<TEntity>)_queries.GetOrAdd(key, _ =>
         {
-            context.Dispose();
-        }
+            var repoType = typeof(ProductQueryRepository<>).MakeGenericType(typeof(TEntity));
+            return Activator.CreateInstance(repoType, _context)
+                   ?? throw new InvalidOperationException($"Could not create query repo for {key}");
+        });
+    }
 
-        public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
-        {
-            var type = typeof(TEntity).Name;
+    public async Task<bool> Complete()
+    {
+        return await _context.SaveChangesAsync() > 0;
+    }
 
-            return (IGenericRepository<TEntity>)_repositories.GetOrAdd(type, t =>
-            {
-                var repositoryType = typeof(GenericRepository<>).MakeGenericType(typeof(TEntity));
-                return Activator.CreateInstance(repositoryType, context)
-                    ?? throw new InvalidOperationException(
-                        $"Could not create repository instance for {t}");
-            });
-        }
+    public void Dispose()
+    {
+        _context.Dispose();
+        GC.SuppressFinalize(this);
     }
 }

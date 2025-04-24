@@ -52,11 +52,12 @@
           [disabled]="!confirmationToken || loading"
           (click)="confirmPayment(stepper)"
           matStepperNext mat-flat-button
+          class="btnConfirm"
           >
           @if (loading) {
             <mat-spinner diameter="20"></mat-spinner>
           }@else {
-            <span>Pay {{cartService.totals()?.total | currency}}</span>
+            <span>Pay {{cartService.totals()?.total |currency:'EGP':'symbol':'1.2-2' }}</span>
           }
 
         </button>

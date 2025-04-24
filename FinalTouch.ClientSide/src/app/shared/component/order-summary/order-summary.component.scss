@@ -1,12 +1,12 @@
 ::ng-deep .checkout-button {
-  background-color: #5E6C58 !important; // اللون الأساسي للزرار
-  color: #fff !important;            // لون النص يكون بني غامق وواضح
+  background-color: #031d2e !important;
+  color: #fff !important;
   font-weight: 600;
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  &:hover {
-    background-color: #D9A189 !important;
-    color: white !important;
-  }
+::ng-deep .checkout-button:hover {
+  background-color: #e27b53 !important;
+  color: white !important;
 }

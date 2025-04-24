@@ -39,7 +39,7 @@ export class ProductEditComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+      const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp','image/jfif'];
 
       if (!allowedTypes.includes(file.type)) {
         this.fileError = 'Only image files are allowed.';
@@ -47,7 +47,7 @@ export class ProductEditComponent implements OnInit {
       }
 
       this.fileError = '';
-      this.product.imageUrl = `/images/products/${file.name}`;
+      this.product.imageUrl = `/images/productss/${file.name}`;
     }
   }
 

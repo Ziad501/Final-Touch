@@ -28,7 +28,7 @@
                 <td class="px-6 py-3">{{ product.name }}</td>
                 <td class="px-6 py-3">{{ product.brand }}</td>
                 <td class="px-6 py-3">{{ product.type }}</td>
-                <td class="px-6 py-3">{{ product.price | currency:'USD' }}</td>
+                <td class="px-6 py-3">{{ product.price | currency:'EGP':'symbol':'1.2-2' }}</td>
                 <td class="px-6 py-3 text-center space-x-2">
                   <a
                     [routerLink]="['/products/edit', product.id]"
@@ -86,7 +86,7 @@
 
             <ng-container matColumnDef="total">
               <th mat-header-cell *matHeaderCellDef class="bg-[#FAF3EF] font-semibold px-4 py-3 text-left">Total</th>
-              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.total | currency}} </td>
+              <td mat-cell *matCellDef="let order" class="px-4 py-2"> {{order.total | currency:'EGP':'symbol':'1.2-2' }} </td>
             </ng-container>
 
 

@@ -4,7 +4,6 @@ using FinalTouch.Core.Entities;
 using FinalTouch.Core.Entities.OrderAggregate;
 using FinalTouch.Core.Interfaces;
 using FinalTouch.Core.Specifications;
-using FinalTouch.InfraStructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -35,7 +34,7 @@ namespace FinalTouch.Api.Controllers
         [HttpGet("delivery-methods")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
-            return Ok(await unit.Repository<DeliveryMethod>().GetAllAsync());
+            return Ok(await unit.QueryRepository<DeliveryMethod>().GetAllAsync());
         }
 
 
@@ -69,16 +68,13 @@ namespace FinalTouch.Api.Controllers
             }
         }
 
-
-        
-
         private async Task HandlePaymentIntentSucceeded(PaymentIntent intent)
         {
             if (intent.Status == "succeeded")
             {
                 var spec = new OrderSpecification(intent.Id, true);
 
-                var order = await unit.Repository<Order>().GetEntityWithSpec(spec)
+                var order = await unit.QueryRepository<Order>().GetEntityWithSpec(spec)
                     ?? throw new Exception("Order not found");
 
                 var orderTotalInCents = (long)Math.Round(order.GetTotal() * 100,

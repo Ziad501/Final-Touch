@@ -298,13 +298,13 @@ namespace FinalTouch.InfraStructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "77ffff82-87f1-45d5-aa55-2154ad0c9856",
+                            Id = "a507bc87-ae8d-4e73-9298-d00504ce0914",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c1ab6fef-bfee-4b33-a715-4becc481ef7d",
+                            Id = "bbf9df2c-8099-4db7-811a-4be177522bc9",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });

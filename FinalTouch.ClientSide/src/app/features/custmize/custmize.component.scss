@@ -55,7 +55,7 @@
   text-align: center;
   padding-top: 3px;
   font-size: 1.05rem;
-  color: #7a6257; // اختياري لو عايز نفس اللون
+  color: #7a6257;
 }
 
 ::ng-deep ng-select .ng-value {
@@ -90,4 +90,14 @@
   color: #fff;
   font-size: 12px;
   line-height: 1;
+}
+
+:host ::ng-deep .ng-select .ng-input input {
+  direction: ltr;
+  text-align: left;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #7a6257;
+  font-family: inherit;
+  padding: 3px 6px;
 }

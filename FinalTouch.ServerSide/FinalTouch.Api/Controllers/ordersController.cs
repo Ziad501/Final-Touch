@@ -1,7 +1,6 @@
 ﻿using FinalTouch.Api.Extensions;
 using FinalTouch.Core.Entities.OrderAggregate;
 using FinalTouch.Core.Entities;
-using FinalTouch.InfraStructure.Services;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +28,7 @@ namespace FinalTouch.Api.Controllers
 
             foreach (var item in cart.Items)
             {
-                var productItem = await unit.Repository<Product>().GetByIdAsync(item.ProductId);
+                var productItem = await unit.QueryRepository<Product>().GetByIdAsync(item.ProductId);
 
                 if (productItem == null) return BadRequest("Problem with the order");
 
@@ -49,7 +48,7 @@ namespace FinalTouch.Api.Controllers
                 items.Add(orderItem);
             }
 
-            var deliveryMethod = await unit.Repository<DeliveryMethod>().GetByIdAsync(orderDto.DeliveryMethodId);
+            var deliveryMethod = await unit.QueryRepository<DeliveryMethod>().GetByIdAsync(orderDto.DeliveryMethodId);
 
             if (deliveryMethod == null) return BadRequest("No delivery method selected");
 
@@ -65,7 +64,7 @@ namespace FinalTouch.Api.Controllers
                 BuyerEmail = email
             };
 
-            unit.Repository<Order>().Add(order);
+            unit.CommandRepository<Order>().Add(order);
 
             if (await unit.Complete())
             {
@@ -80,7 +79,7 @@ namespace FinalTouch.Api.Controllers
         {
             var spec = new OrderSpecification(User.GetEmail());
 
-            var orders = await unit.Repository<Order>().ListAsync(spec);
+            var orders = await unit.QueryRepository<Order>().ListAsync(spec);
 
             var ordersToReturn = orders.Select(o => o.ToDto()).ToList();
 
@@ -92,7 +91,7 @@ namespace FinalTouch.Api.Controllers
         {
             var spec = new OrderSpecification(User.GetEmail(), id);
 
-            var order = await unit.Repository<Order>().GetEntityWithSpec(spec);
+            var order = await unit.QueryRepository<Order>().GetEntityWithSpec(spec);
 
             if (order == null) return NotFound();
 

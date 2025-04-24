@@ -15,14 +15,14 @@ $customTheme: mat.define-theme();
   .mdc-flat-button {
     @apply rounded-md;
 
-    color: #A38772 !important;
+    color: #918d8d !important;
     border-color: #A38772 !important;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
 
     &:hover {
       color: white !important;
-      border-color: #5E6C58 !important;
-      background-color: #5E6C58 !important;
+      border-color: #e27b53 !important;
+      background-color: #e27b53 !important;
     }
 
     mat-icon {
@@ -32,13 +32,13 @@ $customTheme: mat.define-theme();
 
   // ✅ كلاس مخصص للزر الرئيسي
   .btn-primary {
-    background-color: #A38772 !important;
+    background-color: #031d2e !important;
     color: #FFFCF6 !important;
     border: none !important;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #5E6C58 !important;
+      background-color: #e27b53 !important;
     }
 
     mat-icon {
@@ -46,8 +46,8 @@ $customTheme: mat.define-theme();
     }
 
     &:disabled {
-      background-color: #d1d5db !important; // رمادي فاتح
-      color: #9ca3af !important; // رمادي للنص
+      background-color: #d1d5db !important;
+      color: #9ca3af !important;
       cursor: not-allowed !important;
 
       mat-icon {
@@ -57,13 +57,12 @@ $customTheme: mat.define-theme();
   }
 }
 
-// ✅ تنسيقات عامة
 .container {
   @apply mx-auto max-w-screen-2xl;
 }
 
 .text-primary {
-  color: #5E6C58;
+  color: #e27b53;
 }
 
 button.match-input-height {
@@ -74,7 +73,7 @@ button.match-input-height {
   border-right-style: none !important;
 }
 
-/* ✅ Scrollbar Styling */
+
 html,
 body {
   overflow-y: scroll;

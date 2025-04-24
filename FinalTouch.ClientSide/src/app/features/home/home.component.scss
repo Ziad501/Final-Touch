@@ -1,0 +1,59 @@
+/* SCSS Styles (doors-section.component.scss) */
+// Main colors
+$primary-color: #04273b;
+$secondary-color: #04273b;
+$accent-color: #c89f63; // Gold accent to complement the deep blue
+$text-color: #333;
+$light-text: #fff;
+$light-bg: #f8f9fa;
+$border-radius: 8px;
+$box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+
+$primary-color: #101820;
+$secondary-color: #04273b;
+$accent-color: #c89f63; // Gold accent
+$text-color: #333;
+$light-text: #fff;
+$light-bg: #f8f9fa;
+$border-radius: 8px;
+$box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+.section-header {
+  background-color: $primary-color;
+  padding: 2rem 1rem;
+  text-align: center;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: $transition;
+}
+
+.heading {
+  color: $accent-color;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  display: inline-block;
+  position: relative;
+}
+
+.accent-line {
+  width: 80px;
+  height: 3px;
+  background-color: $accent-color;
+  margin: 0 auto 20px;
+  transition: $transition;
+}
+
+.subheading {
+  color: darken($light-bg, 40%);;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: $light-text;
+}
+

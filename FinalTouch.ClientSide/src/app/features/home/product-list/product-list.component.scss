@@ -1,0 +1,33 @@
+img {
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+button {
+  width: 100%;
+  background-color: #A38772;
+  color: white;
+  &:hover {
+    background-color: #D9A189;
+  }
+}
+
+.custom-add-btn {
+  background-color: #031d2e !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 0.375rem !important;
+  width: 100% !important;
+  transition: background-color 0.3s ease-in-out !important;
+
+  &:hover {
+    background-color: #bb6644 !important;
+  }
+}
+
+a:hover h3 {
+  text-decoration: underline;
+}

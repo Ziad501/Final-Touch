@@ -1,0 +1,96 @@
+@if (products) {
+  <div class="flex flex-col gap-3">
+
+
+    <div class="flex justify-between gap-3 items-center">
+
+
+      <div class="flex justify-center mt-2 ml-40 mb-2 w-full">
+        <div class="relative flex items-center w-full max-w-md">
+          <input
+            type="search"
+            class="block w-full p-4 text-sm border rounded text-[#A38772] border-[#A38772] placeholder-[#A38772]
+                  focus:outline-none focus:ring-2 focus:ring-[#D9A189] bg-white"
+            placeholder="Search for products..."
+            name="search"
+            [(ngModel)]="shopParams.search"
+            (ngModelChange)="onSearchChange()"
+          />
+
+          <!-- X icon if search exists -->
+          <button *ngIf="shopParams.search"
+                  type="button"
+                  (click)="clearSearch()"
+                  class="absolute inset-y-0 right-2 flex items-center text-[#A38772] hover:text-red-400 transition-colors">
+            <mat-icon>close</mat-icon>
+          </button>
+
+          <!-- Search icon if no text -->
+          <button *ngIf="!shopParams.search"
+                  mat-icon-button
+                  type="button"
+                  class="absolute inset-y-0 right-2 flex items-center text-[#A38772]">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="flex gap-3">
+        <button
+          class="match-input-height text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+          mat-stroked-button
+          (click)="openFilterDialog()">
+          <mat-icon>filter_list</mat-icon>
+          Filters
+        </button>
+
+        <button
+          class="match-input-height text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+          mat-stroked-button
+          [matMenuTriggerFor]="sortMenu">
+          <mat-icon>swap_vert</mat-icon>
+          Sort
+        </button>
+      </div>
+
+    </div>
+
+
+    <div class="grid grid-cols-5 gap-4">
+      @for(product of products.data; track product.id) {
+        <app-product-item [product]="product"></app-product-item>
+      }
+    </div>
+  </div>
+
+<div class="flex justify-center mt-10">
+  <mat-paginator
+    class="!bg-white text-[#A38772]"
+    (page)="handlePageEvent($event)"
+    [length]="products.count"
+    [pageSize]="shopParams.pageSize"
+    showFirstLastButtons="true"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="shopParams.pageNumber - 1"
+    aria-label="Select page">
+  </mat-paginator>
+</div>
+
+
+  <!-- Sort Menu -->
+  <mat-menu #sortMenu="matMenu" class="bg-[#FEF4EA] text-[#A38772]">
+    <mat-selection-list
+      [multiple]="false"
+      (selectionChange)="onSortChange($event)">
+      @for (sort of sortOptions; track $index) {
+        <mat-list-option
+          [value]="sort.value"
+          [selected]="shopParams.sort === sort.value"
+          class="hover:bg-[#D9A189] hover:text-white transition-colors">
+          {{sort.name}}
+        </mat-list-option>
+      }
+    </mat-selection-list>
+  </mat-menu>
+  }

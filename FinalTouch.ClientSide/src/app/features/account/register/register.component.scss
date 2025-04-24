@@ -1,0 +1,18 @@
+.btn-submit {
+  background-color: #5E6C58 !important; // زيتي
+  color: white !important;
+  &:hover {
+    background-color: #4d5949 !important;
+  }
+
+  // لما يكون الفورم invalid & disabled
+  &:disabled {
+    background-color: #9ca3af !important; // رمادي
+    cursor: not-allowed !important;
+  }
+}
+.bg-gradient-register {
+  background: #f4efe6 !important;
+}
+
+

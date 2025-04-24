@@ -1,0 +1,83 @@
+/* Add this to your component's SCSS file */
+
+:host ::ng-deep {
+  // Custom styles for the menu panel
+  .custom-menu .mat-menu-content {
+    padding: 0 !important;
+  }
+
+  .mat-menu-panel.custom-menu {
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  // Badge customization
+  .mat-badge-content {
+    background-color: #e27b53 !important;
+    font-weight: 600;
+    font-size: 10px;
+  }
+
+  // Progress bar customization
+  .mat-progress-bar-fill::after {
+    background-color: #e27b53 !important;
+  }
+
+  .mat-progress-bar-buffer {
+    background-color: rgba(226, 123, 83, 0.2) !important;
+  }
+}
+
+// Header effects
+header {
+  transition: all 0.3s ease;
+
+  &.scrolled {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Fix for overlay - add this to your app.component or relevant component
+@media (max-width: 768px) {
+  .nav-mobile-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(4, 39, 59, 0.9);
+    z-index: 49;
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+:host ::ng-deep {
+  a.router-link-active .logo-wrapper,
+  a.group .logo-wrapper {
+    padding: 0 !important;
+    background: none !important;
+  }
+
+  a.group:hover .logo-wrapper::before {
+    content: none !important;
+  }
+}
+
+:host ::ng-deep {
+  .mat-menu-panel.custom-menu {
+    box-shadow: none !important; // يمنع الظل الأبيض
+    margin: 0 !important;         // يتأكد إن مفيش margin مسبب فراغ
+    padding: 0 !important;        // يتأكد إن مفيش padding خارجي
+    background: transparent !important; // في حالة الخلفية البيضاء من panel نفسه
+  }
+}

@@ -8,92 +8,63 @@
   <a href="#"><img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-blueviolet?logo=dotnet" /></a>
   <a href="#"><img alt="Angular 18" src="https://img.shields.io/badge/Angular-18-red?logo=angular" /></a>
   <a href="#"><img alt="Clean Architecture" src="https://img.shields.io/badge/Architecture-Clean-brightgreen" /></a>
-  <a href="#"><img alt="Stripe" src="https://img.shields.io/badge/Payments-Stripe-blue?logo=stripe" /></a>
-  <a href="#"><img alt="Redis" src="https://img.shields.io/badge/Cache-Redis-darkred?logo=redis" /></a>
+  <a href="#"><img alt="SOLID" src="https://img.shields.io/badge/Design-SOLID-lightgrey" /></a>
+  <a href="#"><img alt="Jira" src="https://img.shields.io/badge/Tracking-Jira-blue?logo=jira" /></a>
+  <a href="#"><img alt="CI/CD" src="https://img.shields.io/badge/CI/CD-GitHub_Actions-333?logo=githubactions" /></a>
 </p>
 
 ---
 
 ## 🌟 Overview
 
-**FinalTouch** is a modern full-stack e-commerce solution for the finishing materials industry. It empowers customers to:
+**FinalTouch** is a full-stack e-commerce platform tailored for the finishing materials industry.
 
-- 🛍️ Browse and purchase tiles, doors, paints, and more  
-- 📐 Auto-calculate material needs based on unit area  
-- 👷 Book professional technicians for installation  
-- 💳 Pay securely via Stripe
+Customers can:
+- 🛍️ Browse and purchase tiles, paints, doors, and more
+- 📐 Auto-calculate material quantities by room dimensions
+- 👷 Book professional installers
+- 💳 Checkout securely using Stripe
 
-Designed with scalability, clean architecture, and performance in mind — powered by the latest in .NET Core & Angular.
-
----
-
-## 🚀 Live Demo
-
-> 🎯 **Link**: Working on it
+The platform is built with performance, modularity, and scalability in mind using **.NET 8**, **Angular 18**, and **Clean Architecture**.
 
 ---
 
-## ⚙️ Tech Stack
+## 🔧 Key Tech Highlights
 
-| Category         | Technology |
-|------------------|------------|
-| 👨‍💻 Frontend       | Angular 18 (Standalone, Lazy Loading, Reactive Forms) |
-| 🧠 Backend        | .NET 8 Web API |
-| 🧱 Architecture   | Clean Architecture (API / Core / Infrastructure) |
-| 🧩 Patterns       | CQRS, Specification Pattern, Repository & UoW |
-| 🔐 Auth           | JWT + ASP.NET Identity |
-| 📦 Caching        | Redis |
-| 💳 Payments       | Stripe API |
-| 🧪 Validation     | FluentValidation |
-| 📐 UI Framework   | Angular Material + Tailwind CSS |
+- ✅ Applied **Clean Architecture** (API, Core, Infrastructure)
+- ✅ Followed **SOLID Principles**
+- ✅ Separated responsibilities using **CQRS**
+- ✅ Integrated **FluentValidation** for input validation
+- ✅ Used **Jira** for issue tracking and sprint planning
+- ✅ Set up **CI/CD** pipeline with GitHub Actions
+- ✅ Implemented caching with **Redis**
+- ✅ Payment processing with **Stripe**
+- ✅ Secure **JWT Authentication** using ASP.NET Identity
 
 ---
 
-## ✨ Key Features
+## 🛠️ Features
 
-- 🛒 **E-Commerce Engine**  
-  Product listing, filtering, sorting, details, cart, and checkout
-
-- 📐 **Smart Material Estimator**  
-  Automatically calculates required quantity based on room size
-
-- 👷 **Technician Booking**  
-  Find and schedule professionals for installation work
-
-- 🔄 **Modular Architecture**  
-  Clean separation of concerns using CQRS & layered design
-
-- 🔐 **Secure Authentication**  
-  JWT-based auth with role management
-
-- 💳 **Stripe Integration**  
-  Real-time 3D Secure payment workflow
-
-- 🔥 **Optimized Performance**  
-  Redis-powered caching for faster data access
-
-- 📊 **Admin Ready**  
-  (Optional) Add dashboards for managing orders and products
+- 💡 **Smart Product Filtering & Sorting**
+- 🧮 **Material Estimator Based on Dimensions**
+- 🛒 **Full E-Commerce Flow (Cart → Checkout)**
+- 👷 **Hire Professionals for Installation**
+- 🔐 **Role-based Secure Auth**
+- ⚡ **Performance Optimized with Caching**
+- 🧪 **Form-Level Validation with FluentValidation**
+- ⚙️ **CI/CD Pipelines with GitHub Actions**
 
 ---
 
-## 👨‍💻 FinalTouch Dev Crew
+## 🧪 Dev Team
 
-Ziad, Mohsen, Abdullah and Abo-Saood
+**Ziad, Mohsen, Abdullah, Abo-Saood**
 
 ---
 
 ## ⚙️ Local Setup
 
-### Backend (.NET API)
+### Backend (.NET 8 API)
 ```bash
-cd FinalTouch.ServerSide
-dotnet restore
-dotnet dev-certs https --trust
+cd FinalTouch.ServerSide\FinalTouch.API
 dotnet run
-```
-### Frontend (Angular)
-```bash
-cd final-touch-client
-npm install
-ng serve --proxy-config proxy.conf.json

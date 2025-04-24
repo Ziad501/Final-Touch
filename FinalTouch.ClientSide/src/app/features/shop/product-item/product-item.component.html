@@ -1,0 +1,27 @@
+<mat-card
+  appearance="raised"
+  routerLink="/shop/{{product.id}}"
+  class="product-card bg-[#FFFCF6] text-[#5E6C58] border border-[#ECDDCF] transition-colors w-72 h-[420px]"
+>
+  <img
+    src="{{product.imageUrl}}"
+    alt="image of {{product.name}}"
+    class="w-full h-75 object-cover rounded-t-xl"
+  />
+
+  <mat-card-content class="mt-2">
+    <h2 class="text-sm font-semibold uppercase">{{product.name}}</h2>
+    <p class="font-light">{{product.price | currency:'EGP':'symbol':'1.2-2' }}</p>
+  </mat-card-content>
+
+  <mat-card-actions (click)="$event.stopPropagation()">
+    <button
+      mat-stroked-button
+      class="w-full text-[#5E6C58] border-[#5E6C58] hover:bg-[#D9A189] hover:text-white transition-colors"
+      (click)="cartService.addItemToCart(product)"
+    >
+      <mat-icon>add_shopping_cart</mat-icon>
+      Add to cart
+    </button>
+  </mat-card-actions>
+</mat-card>

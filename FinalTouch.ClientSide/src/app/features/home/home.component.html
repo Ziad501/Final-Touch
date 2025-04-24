@@ -1,0 +1,210 @@
+
+<div class="w-full">
+  <div class="flex flex-col items-center justify-center relative h-screen">
+      <!-- Glossy border effect -->
+      <div class="absolute inset-0 w-full h-full border-8 border-white bg-transparent opacity-20 z-10 pointer-events-none shadow-inner"></div>
+
+      <!-- Image slider with multiple images -->
+      <div class="absolute inset-0 w-full h-full">
+          <!-- Image 1 -->
+          <img class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100"
+              id="slide-1" src="../images/1.jpg" alt="Slide 1"/>
+          <!-- Image 2 -->
+          <img class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0"
+              id="slide-2" src="../images/2.jpg" alt="Slide 2"/>
+          <!-- Image 3 -->
+          <img class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0"
+              id="slide-3" src="../images/4.jpg" alt="Slide 3"/>
+      </div>
+
+      <!-- Navigation dots -->
+      <div class="absolute bottom-32 left-0 right-0 flex justify-center space-x-4 z-20">
+          <button class="w-3 h-3 rounded-full bg-white opacity-70 hover:opacity-100 focus:outline-none active"
+                  onclick="changeSlide(1)"></button>
+          <button class="w-3 h-3 rounded-full bg-white opacity-70 hover:opacity-100 focus:outline-none"
+                  onclick="changeSlide(2)"></button>
+          <button class="w-3 h-3 rounded-full bg-white opacity-70 hover:opacity-100 focus:outline-none"
+                  onclick="changeSlide(3)"></button>
+      </div>
+
+      <div class="flex flex-col w-full h-full relative z-10">
+          <div class="flex w-full h-full items-end justify-end">
+              <button
+                  class="bg-[#04273b] font-semibold text-2xl
+                  text-white rounded-2xl px-8 py-4 border-2 border-transparent mb-16 mr-16
+                  transition-all duration-200 hover:bg-[#e27b53] hover:scale-105 active:scale-95 active:bg-[#032030]
+                  hover:shadow-lg active:shadow-md focus:outline-none" style="cursor: pointer;"
+                  routerLink="/shop">
+                  Go to shop
+              </button>
+          </div>
+      </div>
+  </div>
+<!-- ABOUT US SECTION -->
+<section class="w-full py-24 bg-white">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+      <!-- Image container with decorative elements -->
+      <div class="w-full md:w-1/2 relative">
+        <div class="absolute -top-6 -left-6 w-full h-full border-2 border-[#04273b] z-0"></div>
+        <div class="relative z-10 overflow-hidden rounded-lg shadow-xl">
+          <img
+            src="images/AboutUs.png"
+            alt="About Our Team"
+            class="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-[#e27b53] opacity-20 rounded-full"></div>
+      </div>
+
+      <!-- Text content with animated highlight -->
+      <div class="w-full md:w-1/2">
+        <div class="relative inline-block mb-8">
+          <h2 class="text-5xl font-bold text-[#04273b]">About Us</h2>
+          <div class="absolute -bottom-2 left-0 w-2/3 h-1 bg-[#e27b53]"></div>
+        </div>
+
+        <p class="text-xl leading-relaxed text-gray-700 mb-8">
+          We are dedicated to providing the best shopping experience for our customers.
+          Our mission is to deliver high-quality products with unbeatable service.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          <div class="flex items-start">
+            <div class="mr-4 text-[#e27b53]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Premium Quality</h3>
+              <p class="text-gray-600">We source only the finest materials for our products.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="mr-4 text-[#e27b53]">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold mb-2">Fast Delivery</h3>
+              <p class="text-gray-600">We ensure your products reach you quickly and safely.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mb-12">
+  <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
+    <h2 class="heading">Premium Doors</h2>
+    <div class="accent-line"></div>
+    <p class="subheading">Enhance your space with quality finishing materials</p>
+  </div>
+  <app-product-list [brand]="['Barrywood']"></app-product-list>
+</div>
+
+<div class="mb-12">
+  <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
+    <h2 class="heading">Premium Parquet</h2>
+    <div class="accent-line"></div>
+    <p class="subheading">Elevate your flooring with stylish and durable parquet solutions</p>
+  </div>
+  <app-product-list [brand]="['Chrono Original','Krono Original']"></app-product-list>
+</div>
+
+<div class="mb-12">
+  <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
+    <h2 class="heading">Elegant Mosaic</h2>
+    <div class="accent-line"></div>
+    <p class="subheading">Add artistic charm to your walls and floors with our mosaic collection</p>
+  </div>
+  <app-product-list [brand]="['Generic']"></app-product-list>
+</div>
+
+<div class="mb-12">
+  <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
+    <h2 class="heading">Porcelain Tiles</h2>
+    <div class="accent-line"></div>
+    <p class="subheading">Experience timeless elegance with our high-grade porcelain tiles</p>
+  </div>
+  <app-product-list [brand]="['Beroya','Peruvian']"></app-product-list>
+</div>
+
+
+
+<!-- CONTACT US SECTION -->
+<section class="w-full py-24 bg-gray-50 relative overflow-hidden mt-32">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-32 h-32 bg-[#e27b53] opacity-10 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#04273b] opacity-5 rounded-full transform translate-x-1/3 translate-y-1/3"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-5xl font-bold text-[#04273b] mb-4">Contact Us</h2>
+      <div class="w-24 h-1 bg-[#e27b53] mx-auto mb-6"></div>
+      <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+        Have questions or feedback? We'd love to hear from you.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-2xl p-8 max-w-3xl mx-auto transform hover:scale-[1.01] transition-all duration-300">
+      <form class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="relative">
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e27b53] focus:border-transparent transition"
+            />
+            <div class="absolute left-3 top-0 px-1 bg-gray-50 text-[#04273b] text-xs font-medium transform -translate-y-1/2">
+              Name
+            </div>
+          </div>
+
+          <div class="relative">
+            <input
+              type="email"
+              placeholder="Your Email"
+              class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e27b53] focus:border-transparent transition"
+            />
+            <div class="absolute left-3 top-0 px-1 bg-gray-50 text-[#04273b] text-xs font-medium transform -translate-y-1/2">
+              Email
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <textarea
+            rows="4"
+            placeholder="Your Message"
+            class="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e27b53] focus:border-transparent transition"
+          ></textarea>
+          <div class="absolute left-3 top-0 px-1 bg-gray-50 text-[#04273b] text-xs font-medium transform -translate-y-1/2">
+            Message
+          </div>
+        </div>
+
+        <div class="flex justify-center">
+          <button
+            type="submit"
+            class="bg-[#04273b] text-white px-8 py-4 rounded-lg hover:bg-[#e27b53]
+            transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1
+            flex items-center space-x-2 font-medium"
+          >
+            <span>Send Message</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+

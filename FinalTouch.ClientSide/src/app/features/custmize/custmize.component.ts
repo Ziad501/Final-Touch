@@ -28,8 +28,8 @@ export class CustmizeComponent implements OnInit {
     length: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
     width: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
     height: ['', [Validators.pattern(/^[0-9]*\.?[0-9]+$/)]],
-    layers: ['', [Validators.pattern(/^\d+$/)]],
-    color: ['', Validators.required],
+    layers: ['', [Validators.required, Validators.pattern(/^[1-9][0-9]*$/)]],
+    color: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]{3,}$/)]],
     area: [{ value: 0, disabled: true }],
     quantity: [0, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]],
     pricePerUnit: [{ value: 0, disabled: true }],
@@ -37,6 +37,10 @@ export class CustmizeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    // ✅ مسح البيانات عند الريفرش
+    sessionStorage.removeItem('customizeForm');
+    sessionStorage.removeItem('customizeSelectedProduct');
+
     const savedForm = sessionStorage.getItem('customizeForm');
     const savedProduct = sessionStorage.getItem('customizeSelectedProduct');
 
@@ -44,9 +48,6 @@ export class CustmizeComponent implements OnInit {
       this.form.patchValue(JSON.parse(savedForm));
       this.selectedProduct = JSON.parse(savedProduct);
     }
-
-    sessionStorage.removeItem('customizeForm');
-    sessionStorage.removeItem('customizeSelectedProduct');
 
     this.getProducts();
 
@@ -63,33 +64,37 @@ export class CustmizeComponent implements OnInit {
       const lengthControl = this.form.get('length');
       const widthControl = this.form.get('width');
       const heightControl = this.form.get('height');
+      const colorControl = this.form.get('color');
 
-      if (this.isBootsLikeType()) {
+      if (this.isPaintLikeType()) {
         lengthControl?.clearValidators();
         widthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
         heightControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
+        colorControl?.setValidators([Validators.required, Validators.pattern(/^[A-Za-z\s]{3,}$/)]);
       } else {
         lengthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
         widthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
         heightControl?.clearValidators();
+        colorControl?.clearValidators(); // ✅ إلغاء الفاليديشن لما النوع مش Paint
       }
 
       lengthControl?.updateValueAndValidity({ emitEvent: false });
       widthControl?.updateValueAndValidity({ emitEvent: false });
       heightControl?.updateValueAndValidity({ emitEvent: false });
+      colorControl?.updateValueAndValidity({ emitEvent: false });
 
       const pricePerUnit = product?.price ?? 0;
       let area = length * width;
       let quantity = 0;
 
-      if (this.isQuantityOnlyType()) {
+      if (this.isPaintLikeType()) {
+        quantity = Math.ceil((area * layers) / 6);
+      } else if (this.isQuantityOnlyType()) {
         quantity = Number(values.quantity) || 0;
-      } else if (this.isBootsLikeType() || product?.type === 'ResinArt') {
+      } else if (this.isDoorsLikeType() || product?.type === 'ResinArt') {
         quantity = Number(values.quantity) || 0;
-      } else if (['GlassCast', 'EastCoastResin', 'GLC'].includes(product?.type ?? '')) {
-        quantity = Math.ceil((area * layers) / 4);
       } else {
-        quantity = Math.ceil(area / 8);
+        quantity = Math.ceil(area / 1.3);
       }
 
       const totalPrice = quantity * pricePerUnit;
@@ -150,12 +155,12 @@ export class CustmizeComponent implements OnInit {
     });
   }
 
-  isBootsLikeType(): boolean {
+  isDoorsLikeType(): boolean {
     return this.selectedProduct?.type === 'Interior Door';
   }
 
-  isBoardsLikeType(): boolean {
-    return this.selectedProduct?.type === 'Paint';
+  isPaintLikeType(): boolean {
+    return this.selectedProduct?.type === 'Paint' || this.selectedProduct?.type === 'EastCoastResin';
   }
 
   isQuantityOnlyType(): boolean {
@@ -177,8 +182,31 @@ export class CustmizeComponent implements OnInit {
     const control = this.form.get(controlName);
     if (!control || !control.errors) return '';
     if (control.hasError('required')) return `${controlName} is required`;
-    if (control.hasError('pattern')) return `${controlName} must be a valid number`;
+    if (control.hasError('pattern')) {
+      if (controlName === 'layers') return `Layers must be a positive whole number`;
+      if (controlName === 'color') return `Color must be at least 3 letters and contain letters only`;
+      return `${controlName} must be a valid positive number`;
+    }
     if (control.hasError('min')) return `${controlName} must be greater than 0`;
     return '';
+  }
+
+  isAddToCartDisabled(): boolean {
+    const quantity = this.form.get('quantity')?.value ?? 0;
+
+    // الشرط العام
+    if (quantity <= 0) return true;
+
+    // شرط خاص بالدهانات
+    if (this.isPaintLikeType()) {
+      const color = this.form.get('color')?.value?.trim();
+      const layers = this.form.get('layers')?.value;
+
+      // لو مفيش لون أو عدد الطبقات فاضي أو صفر → ممنوع
+      if (!color || color.length < 3 || !/^[A-Za-z\s]+$/.test(color)) return true;
+      if (!layers || Number(layers) <= 0 || !Number.isInteger(Number(layers))) return true;
+    }
+
+    return false;
   }
 }

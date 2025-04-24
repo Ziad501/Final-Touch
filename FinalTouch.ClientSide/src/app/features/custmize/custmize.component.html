@@ -11,10 +11,11 @@
 
         <div class="flex justify-center">
           <button (click)="addToCart()"
-                  class="w-4/5 py-3 bg-[#A38772] text-white text-base font-medium rounded-full hover:bg-[#D9A189] transition transform active:scale-95 duration-150 ease-in-out disabled:bg-gray-400"
-                  [disabled]="!form.valid || !form.get('quantity')?.value || (form.get('quantity')?.value ?? 0) <= 0 || isLayerInvalidForBoards">
+            class="w-4/5 py-3 bg-[#A38772] text-white text-base font-medium rounded-full hover:bg-[#D9A189] transition transform active:scale-95 duration-150 ease-in-out disabled:bg-gray-400"
+            [disabled]="isAddToCartDisabled()">
             Add to Cart
           </button>
+
         </div>
       </div>
     </ng-container>
@@ -47,7 +48,7 @@
       <span class="text-sm text-red-500 pt-1" *ngIf="form.get('type')?.touched && form.get('type')?.invalid">Product is required</span>
     </div>
 
-    <ng-container *ngIf="isBootsLikeType()">
+    <ng-container *ngIf="isDoorsLikeType()">
       <div class="flex flex-col">
         <label class="mb-1 font-semibold text-[#7a6257]">Number of doors</label>
         <input type="text" formControlName="quantity" class="p-2 border border-[#ECDDCF] rounded-lg" placeholder="Enter quantity">
@@ -55,7 +56,7 @@
       </div>
     </ng-container>
 
-    <ng-container *ngIf="isBoardsLikeType()">
+    <ng-container *ngIf="isPaintLikeType()">
       <div class="flex gap-4">
         <div class="flex flex-col w-1/2">
           <label class="mb-1 font-semibold text-[#7a6257]">Length (m)</label>
@@ -71,8 +72,8 @@
       <div class="flex flex-col">
         <label class="mb-1 font-semibold text-[#7a6257]">Number of paint layers</label>
         <input type="text" formControlName="layers" class="p-2 border border-[#ECDDCF] rounded-lg" placeholder="Enter layers">
-        <span class="text-sm text-red-500 pt-1" *ngIf="(form.get('layers')?.touched || form.get('layers')?.dirty) && isLayerInvalidForBoards">
-          *Layers must be a positive whole number
+        <span class="text-sm text-red-500 pt-1" *ngIf="form.get('layers')?.touched && form.get('layers')?.errors">
+          {{ getErrorMessage('layers') }}
         </span>
       </div>
       <div class="flex flex-col">

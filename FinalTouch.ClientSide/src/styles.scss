@@ -15,7 +15,7 @@ $customTheme: mat.define-theme();
   .mdc-flat-button {
     @apply rounded-md;
 
-    color: #A38772 !important;
+    color: #918d8d !important;
     border-color: #A38772 !important;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
 
@@ -57,13 +57,12 @@ $customTheme: mat.define-theme();
   }
 }
 
-// ✅ تنسيقات عامة
 .container {
   @apply mx-auto max-w-screen-2xl;
 }
 
 .text-primary {
-  color: #5E6C58;
+  color: #e27b53;
 }
 
 button.match-input-height {
@@ -74,7 +73,7 @@ button.match-input-height {
   border-right-style: none !important;
 }
 
-/* ✅ Scrollbar Styling */
+
 html,
 body {
   overflow-y: scroll;

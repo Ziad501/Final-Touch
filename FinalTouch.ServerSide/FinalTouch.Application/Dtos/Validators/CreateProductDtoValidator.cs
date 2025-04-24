@@ -24,7 +24,7 @@ namespace FinalTouch.Application.Dtos.Validators
             RuleFor(x => x.Price)
                 .GreaterThan(0).WithMessage("Price must be greater than 0");
 
-            RuleFor(x => x.PictureUrl)
+            RuleFor(x => x.ImageUrl)
                 .NotEmpty().WithMessage("Picture URL is required.");
 
             RuleFor(x => x.Type)

@@ -52,6 +52,7 @@
           [disabled]="!confirmationToken || loading"
           (click)="confirmPayment(stepper)"
           matStepperNext mat-flat-button
+          class="btnConfirm"
           >
           @if (loading) {
             <mat-spinner diameter="20"></mat-spinner>

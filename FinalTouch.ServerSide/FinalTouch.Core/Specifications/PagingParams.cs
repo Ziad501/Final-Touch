@@ -8,7 +8,7 @@ namespace FinalTouch.Core.Specifications
 {
     public class PagingParams
     {
-		private const int MaxPageSize = 50;
+		private const int MaxPageSize = 100;
 		public int PageIndex { get; set; } = 1;
 
 

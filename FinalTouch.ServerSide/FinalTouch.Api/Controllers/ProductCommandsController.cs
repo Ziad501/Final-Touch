@@ -17,7 +17,7 @@ public class ProductCommandsController(IUnitOfWork unit) : ControllerBase
             Name = dto.Name,
             Description = dto.Description,
             Price = dto.Price,
-            ImageUrl = dto.PictureUrl,
+            ImageUrl = dto.ImageUrl,
             Type = dto.Type,
             Brand = dto.Brand,
             QuantityInStock = dto.QuantityInStock

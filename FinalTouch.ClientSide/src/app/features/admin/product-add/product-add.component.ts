@@ -46,7 +46,7 @@ export class ProductAddComponent   {
         return;
       }
 
-      this.fileError = '';
+      // this.fileError = '';
       this.product.imageUrl = `/images/productss/${file.name}`;
     }
   }

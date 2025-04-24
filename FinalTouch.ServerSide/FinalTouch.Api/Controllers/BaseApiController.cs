@@ -23,7 +23,6 @@ namespace FinalTouch.Api.Controllers
             return Ok(pagination);
         }
 
-<<<<<<< HEAD
         protected async Task<ActionResult> CreatePagedResult<T, TDto>(
             IProductCommandRepository<T> cmd,
             IProductQueryRepository<T> quer,
@@ -49,22 +48,4 @@ namespace FinalTouch.Api.Controllers
             return (items, count);
         }
     }
-=======
-			return Ok(pagination);
-		}
-		protected async Task<ActionResult> CreatePagedResult<T, TDto>(IGenericRepository<T> repo,
-			ISpecification<T> spec, int pageIndex, int pageSize, Func<T, TDto> toDto) where T
-			: BaseEntity, IDtoConvertible
-		{
-			var items = await repo.ListAsync(spec);
-			var count = await repo.CountAsync(spec);
-
-			var dtoItems = items.Select(toDto).ToList();
-
-			var pagination = new Pagination<TDto>(pageIndex, pageSize, count, dtoItems);
-
-			return Ok(pagination);
-		}
-	}
->>>>>>> origin/main
 }

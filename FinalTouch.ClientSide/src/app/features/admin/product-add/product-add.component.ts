@@ -31,7 +31,7 @@ export class ProductAddComponent   {
 
   onSubmit() {
     this.shopService.addProduct(this.product).subscribe(() => {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/shop']);
     });
   }
 

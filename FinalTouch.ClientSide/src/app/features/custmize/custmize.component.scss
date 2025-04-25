@@ -101,3 +101,28 @@
   font-family: inherit;
   padding: 3px 6px;
 }
+
+::ng-deep .custom-dropdown .ng-select-container {
+  padding-right: 2.5rem !important; // مساحة للسهم
+  position: relative;
+}
+
+::ng-deep .custom-dropdown .ng-arrow-wrapper {
+  right: 1rem !important;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7a6257;
+  font-size: 1rem;
+}
+
+::ng-deep .custom-dropdown .ng-select-container::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: #7a6257 transparent transparent transparent;
+  pointer-events: none;
+}

@@ -9,8 +9,8 @@
       </div>
     </a>
 
-    <!-- Desktop Nav -->
-    <nav class="hidden lg:flex items-center space-x-6 uppercase text-sm font-medium tracking-wider">
+    <!-- Desktop & Tablet Nav -->
+    <nav class="hidden md:flex items-center space-x-6 uppercase text-sm font-medium tracking-wider">
       <a routerLink="/" routerLinkActive="text-[#e27b53]" [routerLinkActiveOptions]="{exact:true}"
         class="flex items-center space-x-2 hover:text-[#e27b53] transition-all duration-300 relative py-2 px-1 group">
         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#e27b53] group-hover:w-full transition-all duration-300"></span>
@@ -38,12 +38,12 @@
     </nav>
 
     <!-- Mobile Menu Toggle -->
-    <button class="lg:hidden text-white focus:outline-none" (click)="toggleMobileMenu()">
+    <button class="md:hidden text-white focus:outline-none" (click)="toggleMobileMenu()">
       <mat-icon>menu</mat-icon>
     </button>
 
     <!-- Right Side (cart + auth) -->
-    <div class="hidden lg:flex items-center space-x-4">
+    <div class="hidden md:flex items-center space-x-4">
       <a routerLink="/Cart" matBadge="{{cartService.itemCount()}}" matBadgeSize="large"
         class="text-[#fffefb] hover:text-[#e27b53] transition-all duration-300 relative p-2 group">
         <div class="absolute inset-0 bg-[#e27b53] opacity-0 group-hover:opacity-10 rounded-full transition-opacity duration-300"></div>
@@ -78,35 +78,36 @@
     </div>
   </div>
 
-<!-- Mobile Menu -->
-<div *ngIf="showMobileMenu" class="lg:hidden bg-[#031d2e] text-white w-full px-6 py-4 space-y-4 shadow-md absolute top-full left-0 z-[9998]">
-  <a routerLink="/" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Home</a>
-  <a routerLink="/shop" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Shop</a>
-  <a *appIsAdmin routerLink="/admin" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Admin</a>
-  <a routerLink="/custmize" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Make your own</a>
-  <a routerLink="/Cart" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Cart</a>
+  <!-- Mobile Menu -->
+  <div *ngIf="showMobileMenu" class="md:hidden bg-[#031d2e] text-white w-full px-6 py-4 space-y-4 shadow-md absolute top-full left-0 z-[9998]">
+    <a routerLink="/" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Home</a>
+    <a routerLink="/shop" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Shop</a>
+    <a *appIsAdmin routerLink="/admin" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Admin</a>
+    <a routerLink="/custmize" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Make your own</a>
+    <a routerLink="/Cart" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Cart</a>
 
-  <ng-container *ngIf="accountService.currentuser(); else guestLinks">
-    <a routerLink="/orders" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">My Orders</a>
-    <button (click)="logout(); toggleMobileMenu()" class="block text-left w-full hover:text-[#e27b53]">Logout</button>
-  </ng-container>
+    <ng-container *ngIf="accountService.currentuser(); else guestLinks">
+      <a routerLink="/orders" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">My Orders</a>
+      <button (click)="logout(); toggleMobileMenu()" class="block text-left w-full hover:text-[#e27b53]">Logout</button>
+    </ng-container>
 
-  <ng-template #guestLinks>
-    <a routerLink="/account/login" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Login</a>
-    <a routerLink="/account/register" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Register</a>
-  </ng-template>
-</div>
-
+    <ng-template #guestLinks>
+      <a routerLink="/account/login" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Login</a>
+      <a routerLink="/account/register" (click)="toggleMobileMenu()" class="block hover:text-[#e27b53]">Register</a>
+    </ng-template>
+  </div>
 </header>
 
+<!-- Loading bar -->
 @if (busyService.loading) {
-  <div class="fixed top-13.5 lg:top-[70px] w-full z-50 flex justify-center">
+  <div class="fixed top-13.5 md:top-[70px] w-full z-50 flex justify-center">
     <div class="w-full max-w-screen-2xl">
       <mat-progress-bar mode="indeterminate" class="h-1 rounded-b-md shadow-md"></mat-progress-bar>
     </div>
   </div>
 }
 
+<!-- User menu -->
 <mat-menu #menu class="custom-menu">
   <div class="p-4 bg-gradient-to-r from-[#031d2e] to-[#04273b] text-white">
     <div class="text-center mb-2 pb-2 border-b border-[#e27b53]/20">

@@ -10,22 +10,22 @@ namespace FinalTouch.Api.Controllers;
 [ApiController]
 public class ProductQueriesController(IUnitOfWork unit) : ControllerBase
 {
-    [HttpGet]
-    public async Task<ActionResult<Pagination<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
-    {
-        var spec = new ProductSpecification(specParams);
-        var count = await unit.QueryRepository<Product>().CountAsync(spec);
-        var products = await unit.QueryRepository<Product>().ListAsync(spec);
+[HttpGet]
+public async Task<ActionResult<Pagination<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
+{
+    var countSpec = new ProductSpecification(specParams, isPagingEnabled: false);
+    var totalItems = await unit.QueryRepository<Product>().CountAsync(countSpec);
 
-        var result = new Pagination<Product>(
-            pageIndex: specParams.PageIndex,
-            pageSize: specParams.PageSize,
-            count: count,
-            data: products
-        );
+    var dataSpec = new ProductSpecification(specParams, isPagingEnabled: true);
+    var products = await unit.QueryRepository<Product>().ListAsync(dataSpec);
 
-        return Ok(result);
-    }
+    return Ok(new Pagination<Product>(
+        pageIndex: specParams.PageIndex,
+        pageSize: specParams.PageSize,
+        count: totalItems,
+        data: products
+));
+}
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetProduct(int id)

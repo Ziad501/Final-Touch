@@ -1,58 +1,39 @@
 using FinalTouch.Api.Dtos;
+using FinalTouch.Application.Features.Products.Commands;
 using FinalTouch.Core.Entities;
-using FinalTouch.Core.Interfaces;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FinalTouch.Api.Controllers;
 
 [Route("api/product")]
 [ApiController]
-public class ProductCommandsController(IUnitOfWork unit) : ControllerBase
+public class ProductCommandsController(IMediator mediator) : ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult<Product>> CreateProduct([FromBody] CreateProductDto dto)
+    public async Task<ActionResult<Product>> CreateProduct([FromBody] CreateProductCommand command)
     {
-        var product = new Product
-        {
-            Name = dto.Name,
-            Description = dto.Description,
-            Price = dto.Price,
-            ImageUrl = dto.ImageUrl,
-            Type = dto.Type,
-            Brand = dto.Brand,
-            QuantityInStock = dto.QuantityInStock
-        };
-
-        unit.CommandRepository<Product>().Add(product);
-
-        if (await unit.Complete())
-        {
-            return CreatedAtAction(nameof(CreateProduct), new { id = product.Id }, product);
-        }
-
-        return BadRequest("Problem creating product");
+        var product = await mediator.Send(command);
+        return CreatedAtAction(nameof(CreateProduct), new { id = product.Id }, product);
     }
+
 
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProduct(int id, Product product)
+    public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductCommand command)
     {
-        if (id != product.Id || !unit.CommandRepository<Product>().ProductExists(id))
-        {
-            return BadRequest("Invalid product ID");
-        }
+        if (id != command.Id) return BadRequest("Mismatched product ID");
 
-        unit.CommandRepository<Product>().Update(product);
-        return await unit.Complete() ? NoContent() : BadRequest("Problem updating product");
+        var result = await mediator.Send(command);
+        return result ? NoContent() : NotFound();
     }
+
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
-        var product = await unit.QueryRepository<Product>().GetByIdAsync(id);
-        if (product == null) return NotFound();
-
-        unit.CommandRepository<Product>().Delete(product);
-        return await unit.Complete() ? NoContent() : BadRequest("Problem deleting product");
+        var result = await mediator.Send(new DeleteProductCommand(id));
+        return result ? NoContent() : NotFound();
     }
+
 }

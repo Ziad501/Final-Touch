@@ -1,7 +1,7 @@
 ﻿using FinalTouch.Core.Entities;
 using FinalTouch.Core.Interfaces;
-using FinalTouch.Api.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
+using FinalTouch.Application.Common;
 
 namespace FinalTouch.Api.Controllers
 {

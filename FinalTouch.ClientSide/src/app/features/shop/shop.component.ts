@@ -46,6 +46,7 @@ export class ShopComponent implements OnInit {
   pageSizeOptions = [5,10,20,50,100];
 
   title = 'FinalTouch';
+
   ngOnInit(): void {
     this.intializeShop();
   }
@@ -64,11 +65,11 @@ export class ShopComponent implements OnInit {
   }
 
   onSearchChange() {
-    this.shopParams.pageNumber = 1; // Reset to first page on search change
+    this.shopParams.pageNumber = 1;
     this.getProducts();
   }
 
-  handlePageEvent(event:PageEvent) {
+  handlePageEvent(event: PageEvent) {
     this.shopParams.pageNumber = event.pageIndex + 1;
     this.shopParams.pageSize = event.pageSize;
     this.getProducts();
@@ -78,34 +79,38 @@ export class ShopComponent implements OnInit {
     const selectedOption = event.options[0];
     if (selectedOption) {
       this.shopParams.sort = selectedOption.value;
-      this.shopParams.pageNumber = 1; // Reset to first page on sort change
+      this.shopParams.pageNumber = 1;
       this.getProducts();
     }
   }
 
   openFilterDialog() {
-    const dialigRef = this.dialogService.open(FiltersDialogComponent, {
-      minWidth: '500px',
+    const dialogRef = this.dialogService.open(FiltersDialogComponent, {
+      width: '100%',
+      maxWidth: '100vw',
+      height: '100%',
+      maxHeight: '100vh',
+      panelClass: 'mobile-filter-dialog',
       data: {
-        selectedBrands : this.shopParams.brand,
-        selectedTypes : this.shopParams.type,
+        selectedBrands: this.shopParams.brand,
+        selectedTypes: this.shopParams.type,
       }
     });
-    dialigRef.afterClosed().subscribe({
+
+    dialogRef.afterClosed().subscribe({
       next: result => {
         if (result) {
-          console.log(result);
-          this.shopParams.brand = result.selectedBrands
-          this.shopParams.type = result.selectedTypes
-          this.shopParams.pageNumber = 1; // Reset to first page on filter change
+          this.shopParams.brand = result.selectedBrands;
+          this.shopParams.type = result.selectedTypes;
+          this.shopParams.pageNumber = 1;
           this.getProducts();
         }
       }
-    })
+    });
   }
+
   clearSearch() {
     this.shopParams.search = '';
     this.getProducts();
   }
-
 }

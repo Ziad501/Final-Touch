@@ -5,8 +5,8 @@
     <div class="flex flex-col lg:flex-row justify-between gap-4 items-center px-4">
 
       <!-- Search Input -->
-      <div class="flex justify-center w-full lg:w-auto mt-5">
-        <div class="relative flex items-center w-full max-w-md">
+      <div class="w-full lg:flex lg:justify-center mt-5 px-4">
+        <div class="relative flex items-center w-full max-w-md lg:max-w-2xl">
           <input
             type="search"
             class="block w-full p-4 text-sm border rounded text-[#A38772] border-[#A38772] placeholder-[#A38772]
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Filter & Sort -->
-      <div class="flex gap-3 flex-wrap justify-center">
+      <div class="flex flex-row gap-3 justify-center flex-nowrap">
         <button
           class="match-input-height text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
           mat-stroked-button
@@ -56,12 +56,14 @@
     </div>
 
     <!-- Products grid or empty state -->
-    <div
-      *ngIf="products.data.length > 0; else noProducts"
-      class="grid gap-4 overflow-hidden px-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 ml-1">
-      @for(product of products.data; track product.id) {
-        <app-product-item [product]="product"></app-product-item>
-      }
+    <div class="w-full px-4 flex justify-center">
+      <div
+        *ngIf="products.data.length > 0; else noProducts"
+        class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        @for(product of products.data; track product.id) {
+          <app-product-item [product]="product"></app-product-item>
+        }
+      </div>
     </div>
 
     <!-- No products message -->

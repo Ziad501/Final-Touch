@@ -8,7 +8,7 @@ $customTheme: mat.define-theme();
 .custom-theme {
   @include mat.all-component-themes($customTheme);
 
-  // ✅ تنسيق عام لأزرار Angular Material
+
   .mdc-button,
   .mdc-raised-button,
   .mdc-stroked-button,
@@ -30,7 +30,7 @@ $customTheme: mat.define-theme();
     }
   }
 
-  // ✅ كلاس مخصص للزر الرئيسي
+
   .btn-primary {
     background-color: #031d2e !important;
     color: #FFFCF6 !important;
@@ -113,3 +113,10 @@ body > app-root {
 }
 
 
+::ng-deep .mobile-filter-dialog .mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
+}

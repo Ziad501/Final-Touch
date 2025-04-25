@@ -1,20 +1,22 @@
 <mat-card
   appearance="raised"
   routerLink="/shop/{{product.id}}"
-  class="product-card bg-[#FFFCF6] text-[#5E6C58] border border-[#ECDDCF] transition-colors w-72 h-[420px]"
+  class="product-card bg-[#FFFCF6] text-[#5E6C58] border border-[#ECDDCF] transition-colors w-72 h-[420px] flex flex-col justify-between overflow-hidden"
 >
   <img
     src="{{product.imageUrl}}"
     alt="image of {{product.name}}"
-    class="w-full h-75 object-cover rounded-t-xl"
+    class="w-full h-64 object-cover rounded-t-xl"
   />
 
-  <mat-card-content class="mt-2">
-    <h2 class="text-sm font-semibold uppercase">{{product.name}}</h2>
-    <p class="font-light">{{product.price | currency:'EGP':'symbol':'1.2-2' }}</p>
+  <mat-card-content class="px-4 mt-2">
+    <h2 class="text-sm font-semibold uppercase leading-snug line-clamp-3">
+      {{ product.name }}
+    </h2>
+    <p class="font-light">{{ product.price | currency:'EGP':'symbol':'1.2-2' }}</p>
   </mat-card-content>
 
-  <mat-card-actions (click)="$event.stopPropagation()">
+  <mat-card-actions class="px-4 pb-4" (click)="$event.stopPropagation()">
     <button
       mat-stroked-button
       class="w-full text-[#5E6C58] border-[#5E6C58] hover:bg-[#D9A189] hover:text-white transition-colors"

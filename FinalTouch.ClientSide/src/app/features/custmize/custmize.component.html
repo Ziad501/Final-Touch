@@ -79,7 +79,9 @@
       <div class="flex flex-col">
         <label class="mb-1 font-semibold text-[#7a6257]">Paint color</label>
         <input type="text" formControlName="color" class="p-2 border border-[#ECDDCF] rounded-lg" placeholder="Enter color name">
-        <span class="text-sm text-red-500 pt-1" *ngIf="form.get('color')?.touched && form.get('color')?.invalid">This field is required</span>
+        <span class="text-sm text-red-500 pt-1" *ngIf="form.get('color')?.touched && form.get('color')?.errors">
+          {{ getErrorMessage('color') }}
+        </span>
       </div>
       <div class="flex flex-col">
         <label class="mb-1 font-semibold text-[#7a6257]">Quantity</label>

@@ -86,16 +86,31 @@ namespace FinalTouch.Api.Controllers
             return Ok(ordersToReturn);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<OrderDto>> GetOrderById(int id)
-        {
-            var spec = new OrderSpecification(User.GetEmail(), id);
+[HttpGet("{id:int}")]
+public async Task<ActionResult<OrderDto>> GetOrderById(int id)
+{
+    var email = User.GetEmail();
+    var isAdmin = User.IsInRole("Admin");
 
-            var order = await unit.QueryRepository<Order>().GetEntityWithSpec(spec);
+    Order? order;
 
-            if (order == null) return NotFound();
+    if (isAdmin)
+    {
+        // Allow admin to get any order
+        var spec = new OrderSpecification(id);
+        order = await unit.QueryRepository<Order>().GetEntityWithSpec(spec);
+    }
+    else
+    {
+        // Normal user can only get their own orders
+        var spec = new OrderSpecification(email, id);
+        order = await unit.QueryRepository<Order>().GetEntityWithSpec(spec);
+    }
 
-            return order.ToDto();
-        }
+    if (order == null) return NotFound();
+
+    return order.ToDto();
+}
+
     }
 }

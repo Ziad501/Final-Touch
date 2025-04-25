@@ -1,4 +1,4 @@
-﻿namespace FinalTouch.Api.RequestHelpers
+﻿namespace FinalTouch.Application.Common
 {
 	public class Pagination<T>(int pageIndex, int pageSize, int count, IReadOnlyList<T> data)
 	{

@@ -5,11 +5,11 @@
     <div class="flex flex-col lg:flex-row justify-between gap-4 items-center px-4">
 
       <!-- Search Input -->
-      <div class="w-full lg:flex lg:justify-center mt-5 px-4">
+      <div class="w-full lg:flex lg:justify-center mt-3 px-3">
         <div class="relative flex items-center w-full max-w-md lg:max-w-2xl">
           <input
             type="search"
-            class="block w-full p-4 text-sm border rounded text-[#A38772] border-[#A38772] placeholder-[#A38772]
+            class="block w-full p-4 text-sm border rounded text-[#e27b53] border-[#e27b53] placeholder-[#e27b53]
                   focus:outline-none focus:ring-2 focus:ring-[#D9A189] bg-white"
             placeholder="Search for products..."
             name="search"
@@ -21,7 +21,7 @@
           <button *ngIf="shopParams.search"
                   type="button"
                   (click)="clearSearch()"
-                  class="absolute inset-y-0 right-2 flex items-center text-[#A38772] hover:text-red-400 transition-colors">
+                  class="absolute inset-y-0 right-2 flex items-center text-[#e27b53] hover:text-red-400 transition-colors">
             <mat-icon>close</mat-icon>
           </button>
 
@@ -29,7 +29,7 @@
           <button *ngIf="!shopParams.search"
                   mat-icon-button
                   type="button"
-                  class="absolute inset-y-0 right-2 flex items-center text-[#A38772]">
+                  class="absolute inset-y-0 right-2 flex items-center text-[#e27b53]">
             <mat-icon>search</mat-icon>
           </button>
         </div>
@@ -38,7 +38,7 @@
       <!-- Filter & Sort -->
       <div class="flex flex-row gap-3 justify-center flex-nowrap">
         <button
-          class="match-input-height text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+          class="match-input-height text-[#e27b53] border-[#e27b53] hover:bg-[#D9A189] hover:text-white transition-colors"
           mat-stroked-button
           (click)="openFilterDialog()">
           <mat-icon>filter_list</mat-icon>
@@ -46,7 +46,7 @@
         </button>
 
         <button
-          class="match-input-height text-[#A38772] border-[#A38772] hover:bg-[#D9A189] hover:text-white transition-colors"
+          class="match-input-height text-[#e27b53] border-[#e27b53] hover:bg-[#D9A189] hover:text-white transition-colors"
           mat-stroked-button
           [matMenuTriggerFor]="sortMenu">
           <mat-icon>swap_vert</mat-icon>
@@ -68,7 +68,7 @@
 
     <!-- No products message -->
     <ng-template #noProducts>
-      <div class="flex justify-center items-center text-[#A38772] text-xl font-semibold h-64 px-4 text-center">
+      <div class="flex justify-center items-center text-[#e27b53] text-xl font-semibold h-64 px-4 text-center">
         <mat-icon class="mr-2">search_off</mat-icon>
         No products found
       </div>
@@ -77,7 +77,7 @@
     <!-- Paginator -->
     <div class="flex justify-center mt-10 px-4">
       <mat-paginator
-        class="!bg-white text-[#A38772]"
+        class="!bg-white text-[#e27b53]"
         (page)="handlePageEvent($event)"
         [length]="products.count"
         [pageSize]="shopParams.pageSize"
@@ -89,7 +89,7 @@
     </div>
 
     <!-- Sort Menu -->
-    <mat-menu #sortMenu="matMenu" class="bg-[#FEF4EA] text-[#A38772]">
+    <mat-menu #sortMenu="matMenu" class="bg-[#FEF4EA] text-[#e27b53]">
       <mat-selection-list
         [multiple]="false"
         (selectionChange)="onSortChange($event)">

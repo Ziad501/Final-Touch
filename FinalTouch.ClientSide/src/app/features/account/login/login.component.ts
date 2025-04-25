@@ -5,9 +5,10 @@ import { MatCard } from '@angular/material/card';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { AccountService } from '../../../core/services/account.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,9 @@ import { MatDivider } from '@angular/material/divider';
     MatFormField,
     MatInput,
     MatLabel,
-    MatButton
+    MatButton,
+    MatIcon,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

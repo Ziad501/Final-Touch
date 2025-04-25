@@ -1,11 +1,11 @@
 <div class="flex justify-center items-start mt-10">
   <div class="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8 text-[#7a6257]">
-    <h2 class="text-2xl font-bold text-center text-[#A38772] mb-6">Add New Product</h2>
+    <h2 class="text-2xl font-bold text-center text-[#e27b53] mb-6">Add New Product</h2>
 
     <form (ngSubmit)="onSubmit()" class="space-y-5" #productForm="ngForm">
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Product Name</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Product Name</label>
         <input type="text" [(ngModel)]="product.name" name="name" required
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter product name"
@@ -16,7 +16,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Description</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Description</label>
         <textarea [(ngModel)]="product.description" name="description" rows="3" required
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter product description"
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Image</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Image</label>
         <input type="file" (change)="onFileSelected($event)" accept="image/*"
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]" />
         <span *ngIf="fileError" class="text-red-600 text-sm">
@@ -36,7 +36,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Price</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Price</label>
         <input type="number" [(ngModel)]="product.price" name="price" required min="0"
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter price"
@@ -47,7 +47,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Quantity in Stock</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Quantity in Stock</label>
         <input type="number" [(ngModel)]="product.quantityInStock" name="quantityInStock" required min="0"
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter quantity in stock"
@@ -58,7 +58,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Brand</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Brand</label>
         <input type="text" [(ngModel)]="product.brand" name="brand" required
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter product brand"
@@ -69,7 +69,7 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-[#A38772] mb-1">Type</label>
+        <label class="block text-sm font-medium text-[#e27b53] mb-1">Type</label>
         <input type="text" [(ngModel)]="product.type" name="type" required
           class="w-full px-4 py-2 border border-[#ECDDCF] rounded-lg shadow-sm focus:ring-2 focus:ring-[#D9A189]"
           placeholder="Enter product type"
@@ -81,7 +81,7 @@
 
       <div class="text-center pt-4">
         <button type="submit" [disabled]="productForm.invalid"
-          class="px-6 py-2 bg-[#A38772] text-white font-semibold rounded-xl shadow hover:bg-[#D9A189] transition">
+          class="px-6 py-2 bg-[#031d2e] text-white font-semibold rounded-xl shadow hover:bg-[#e27b53] transition">
           Add Product
         </button>
       </div>

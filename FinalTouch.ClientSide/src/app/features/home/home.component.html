@@ -99,39 +99,70 @@
 
 <div class="mb-12">
   <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
-    <h2 class="heading">Premium Doors</h2>
+    <h2 class="heading cursor-pointer" (click)="goToDoors()">Premium Doors</h2>
     <div class="accent-line"></div>
     <p class="subheading">Enhance your space with quality finishing materials</p>
   </div>
   <app-product-list [brand]="['Barrywood']"></app-product-list>
+  <div class="flex justify-center mt-6">
+    <button
+      (click)="goToDoors()"
+      class="px-6 py-3 bg-[#04273b] text-white rounded-lg hover:bg-[#e27b53] transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md text-center">
+      Show all doors
+    </button>
+  </div>
 </div>
 
 <div class="mb-12">
   <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
-    <h2 class="heading">Premium Parquet</h2>
+    <h2 class="heading cursor-pointer" (click)="goToParquet()">Premium Parquet</h2>
     <div class="accent-line"></div>
     <p class="subheading">Elevate your flooring with stylish and durable parquet solutions</p>
   </div>
   <app-product-list [brand]="['Chrono Original','Krono Original']"></app-product-list>
+  <div class="flex justify-center mt-6">
+    <button
+      (click)="goToParquet()"
+      class="px-6 py-3 bg-[#04273b] text-white rounded-lg hover:bg-[#e27b53] transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md text-center">
+      Show all Parquet
+    </button>
+  </div>
 </div>
 
 <div class="mb-12">
   <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
-    <h2 class="heading">Elegant Mosaic</h2>
+    <h2 class="heading cursor-pointer" (click)="goToMosaic()">Elegant Mosaic</h2>
     <div class="accent-line"></div>
     <p class="subheading">Add artistic charm to your walls and floors with our mosaic collection</p>
   </div>
   <app-product-list [brand]="['Generic']"></app-product-list>
+  <div class="flex justify-center mt-6">
+    <button
+      (click)="goToMosaic()"
+      class="px-6 py-3 bg-[#04273b] text-white rounded-lg hover:bg-[#e27b53] transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md text-center">
+      Show all Mosaic
+    </button>
+  </div>
 </div>
 
 <div class="mb-12">
   <div class="section-header bg-[#101820] py-8 text-center mb-6 shadow-md rounded-xl">
-    <h2 class="heading">Porcelain Tiles</h2>
+    <h2 class="heading cursor-pointer" (click)="goToPorcelain()">Porcelain Tiles</h2>
     <div class="accent-line"></div>
     <p class="subheading">Experience timeless elegance with our high-grade porcelain tiles</p>
   </div>
+
   <app-product-list [brand]="['Beroya','Peruvian']"></app-product-list>
+
+  <div class="flex justify-center mt-6">
+    <button
+      (click)="goToPorcelain()"
+      class="px-6 py-3 bg-[#04273b] text-white rounded-lg hover:bg-[#e27b53] transition duration-300 w-full max-w-xs sm:max-w-sm md:max-w-md text-center">
+      Show all porcelain
+    </button>
+  </div>
 </div>
+
 
 
 

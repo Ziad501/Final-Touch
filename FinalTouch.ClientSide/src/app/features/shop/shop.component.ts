@@ -14,9 +14,11 @@ import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
+  standalone: true,
   imports: [
     ProductItemComponent,
     MatButton,
@@ -36,25 +38,37 @@ export class ShopComponent implements OnInit {
   private dialogService = inject(MatDialog);
   private shopService = inject(ShopService);
   private breakpointObserver = inject(BreakpointObserver);
-
+  private route = inject(ActivatedRoute);
 
   products?: Pagination<Product>;
+  shopParams = new ShopParams();
+  pageSizeOptions = [5, 10, 20, 50, 100];
 
   sortOptions = [
     { name: 'Alphabetical', value: 'name' },
     { name: 'Price: Low to High', value: 'price' },
     { name: 'Price: High to Low', value: 'priceDesc' }
   ];
-  shopParams = new ShopParams();
-  pageSizeOptions = [5,10,20,50,100];
-
-  title = 'FinalTouch';
 
   ngOnInit(): void {
-    this.intializeShop();
+    this.route.queryParams.subscribe(params => {
+      if (params['types']) {
+        this.shopParams.type = [params['types']];
+      }
+
+      if (params['brands']) {
+        this.shopParams.brand = [params['brands']];
+      }
+
+      if (params['search']) {
+        this.shopParams.search = params['search'];
+      }
+
+      this.initializeShop();
+    });
   }
 
-  intializeShop() {
+  initializeShop() {
     this.shopService.getTypes();
     this.shopService.getBrands();
     this.getProducts();
@@ -62,8 +76,8 @@ export class ShopComponent implements OnInit {
 
   getProducts() {
     this.shopService.getProducts(this.shopParams).subscribe({
-      next: Response => this.products = Response,
-      error: error => console.error(error),
+      next: response => this.products = response,
+      error: error => console.error(error)
     });
   }
 

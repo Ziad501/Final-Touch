@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 import { MatBadge } from '@angular/material/badge';
@@ -10,16 +10,25 @@ import { AccountService } from '../../core/services/account.service';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
 import { IsAdminDirective } from '../../shared/directives/is-admin.directive';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatIcon, MatButton, MatBadge, RouterLink, RouterLinkActive, MatProgressBar, MatMenuTrigger,
+  imports: [
+    MatIcon,
+    MatButton,
+    MatBadge,
+    RouterLink,
+    RouterLinkActive,
+    MatProgressBar,
+    MatMenuTrigger,
     MatMenu,
     MatDivider,
     MatMenuItem,
-    IsAdminDirective],
+    IsAdminDirective,
+    CommonModule
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -28,6 +37,16 @@ export class HeaderComponent {
   cartService = inject(CartService);
   accountService = inject(AccountService);
   private router = inject(Router);
+
+  // Inject ElementRef to access the component's native element
+  constructor(private eRef: ElementRef) {}
+
+  showMobileMenu = false;
+
+  toggleMobileMenu() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
   logout() {
     this.accountService.logout().subscribe({
       next: () => {
@@ -35,9 +54,16 @@ export class HeaderComponent {
         this.router.navigateByUrl('/');
       }
     });
-    if (this.cartService.cart()!=null) {
+    if (this.cartService.cart() != null) {
       this.cartService.deleteCart();
     }
   }
 
+  // Listen for clicks anywhere in the document
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    if (this.showMobileMenu && !this.eRef.nativeElement.contains(event.target)) {
+      this.showMobileMenu = false;
+    }
+  }
 }

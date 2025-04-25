@@ -1,3 +1,10 @@
 .bg-gradient-login {
   background: #f4efe6 !important;
 }
+.btn-submit {
+  background-color: #031d2e !important;
+  color: white !important;
+  &:hover {
+    background-color: #e27b53 !important;
+  }
+}

@@ -30,7 +30,7 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit() {
     this.shopService.updateProduct(this.product.id, this.product).subscribe(() => {
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/shop']);
     });
   }
 

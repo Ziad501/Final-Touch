@@ -50,7 +50,7 @@ $transition: all 0.3s ease;
 }
 
 .subheading {
-  color: darken($light-bg, 40%);;
+  color:($light-bg, 40%);;
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;

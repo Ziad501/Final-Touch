@@ -37,7 +37,6 @@ export class CustmizeComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    // ✅ مسح البيانات عند الريفرش
     sessionStorage.removeItem('customizeForm');
     sessionStorage.removeItem('customizeSelectedProduct');
 
@@ -67,15 +66,33 @@ export class CustmizeComponent implements OnInit {
       const colorControl = this.form.get('color');
 
       if (this.isPaintLikeType()) {
-        lengthControl?.clearValidators();
-        widthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
-        heightControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
-        colorControl?.setValidators([Validators.required, Validators.pattern(/^[A-Za-z\s]{3,}$/)]);
+        lengthControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[0-9]*\.?[0-9]+$/)
+        ]);
+        widthControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[0-9]*\.?[0-9]+$/)
+        ]);
+        heightControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[0-9]*\.?[0-9]+$/)
+        ]);
+        colorControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[A-Za-z\s]{3,}$/)
+        ]);
       } else {
-        lengthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
-        widthControl?.setValidators([Validators.required, Validators.pattern(/^[0-9]*\.?[0-9]+$/)]);
+        lengthControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[0-9]*\.?[0-9]+$/)
+        ]);
+        widthControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^[0-9]*\.?[0-9]+$/)
+        ]);
         heightControl?.clearValidators();
-        colorControl?.clearValidators(); // ✅ إلغاء الفاليديشن لما النوع مش Paint
+        colorControl?.clearValidators();
       }
 
       lengthControl?.updateValueAndValidity({ emitEvent: false });
@@ -181,28 +198,28 @@ export class CustmizeComponent implements OnInit {
   getErrorMessage(controlName: string): string {
     const control = this.form.get(controlName);
     if (!control || !control.errors) return '';
+
     if (control.hasError('required')) return `${controlName} is required`;
+
     if (control.hasError('pattern')) {
       if (controlName === 'layers') return `Layers must be a positive whole number`;
-      if (controlName === 'color') return `Color must be at least 3 letters and contain letters only`;
+      if (controlName === 'color') return `Color must contain letters only and be at least 3 characters`;
       return `${controlName} must be a valid positive number`;
     }
-    if (control.hasError('min')) return `${controlName} must be greater than 0`;
+
+    if (control.hasError('min')) return `${controlName} must be a number and greater than 0`;
+
     return '';
   }
 
   isAddToCartDisabled(): boolean {
     const quantity = this.form.get('quantity')?.value ?? 0;
-
-    // الشرط العام
     if (quantity <= 0) return true;
 
-    // شرط خاص بالدهانات
     if (this.isPaintLikeType()) {
       const color = this.form.get('color')?.value?.trim();
       const layers = this.form.get('layers')?.value;
 
-      // لو مفيش لون أو عدد الطبقات فاضي أو صفر → ممنوع
       if (!color || color.length < 3 || !/^[A-Za-z\s]+$/.test(color)) return true;
       if (!layers || Number(layers) <= 0 || !Number.isInteger(Number(layers))) return true;
     }

@@ -13,6 +13,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-shop',
@@ -34,6 +35,8 @@ import { CommonModule } from '@angular/common';
 export class ShopComponent implements OnInit {
   private dialogService = inject(MatDialog);
   private shopService = inject(ShopService);
+  private breakpointObserver = inject(BreakpointObserver);
+
 
   products?: Pagination<Product>;
 
@@ -85,27 +88,31 @@ export class ShopComponent implements OnInit {
   }
 
   openFilterDialog() {
-    const dialogRef = this.dialogService.open(FiltersDialogComponent, {
-      width: '100%',
-      maxWidth: '100vw',
-      height: '100%',
-      maxHeight: '100vh',
-      panelClass: 'mobile-filter-dialog',
-      data: {
-        selectedBrands: this.shopParams.brand,
-        selectedTypes: this.shopParams.type,
-      }
-    });
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet]).subscribe(result => {
+      const isMobileOrTablet = result.matches;
 
-    dialogRef.afterClosed().subscribe({
-      next: result => {
-        if (result) {
-          this.shopParams.brand = result.selectedBrands;
-          this.shopParams.type = result.selectedTypes;
-          this.shopParams.pageNumber = 1;
-          this.getProducts();
+      const dialogRef = this.dialogService.open(FiltersDialogComponent, {
+        width: isMobileOrTablet ? '100%' : '600px',
+        maxWidth: isMobileOrTablet ? '100vw' : '80vw',
+        height: isMobileOrTablet ? '100%' : 'auto',
+        maxHeight: isMobileOrTablet ? '100vh' : '90vh',
+        panelClass: isMobileOrTablet ? 'mobile-filter-dialog' : 'desktop-filter-dialog',
+        data: {
+          selectedBrands: this.shopParams.brand,
+          selectedTypes: this.shopParams.type,
         }
-      }
+      });
+
+      dialogRef.afterClosed().subscribe({
+        next: result => {
+          if (result) {
+            this.shopParams.brand = result.selectedBrands;
+            this.shopParams.type = result.selectedTypes;
+            this.shopParams.pageNumber = 1;
+            this.getProducts();
+          }
+        }
+      });
     });
   }
 

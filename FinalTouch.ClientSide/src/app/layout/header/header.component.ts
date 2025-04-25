@@ -66,4 +66,5 @@ export class HeaderComponent {
       this.showMobileMenu = false;
     }
   }
+
 }

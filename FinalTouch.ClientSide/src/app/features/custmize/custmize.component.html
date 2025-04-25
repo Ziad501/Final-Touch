@@ -31,21 +31,22 @@
     <div class="flex flex-col">
       <label for="type" class="mb-2 font-semibold text-[#7a6257]">Choose the material type</label>
       <ng-select
-        [items]="products"
-        bindLabel="name"
-        bindValue="id"
-        formControlName="type"
-        placeholder="Choose a material"
-        (change)="onProductChange($event)"
-        [clearable]="!!selectedProduct">
-        <ng-template ng-option-tmp let-item="item">
-          <div class="flex items-center">
-            <img [src]="item.imageUrl" width="40" height="40" class="mr-2 object-contain" />
-            <span>{{ item.name }}</span>
-          </div>
-        </ng-template>
-      </ng-select>
-      <span class="text-sm text-red-500 pt-1" *ngIf="form.get('type')?.touched && form.get('type')?.invalid">Product is required</span>
+      class="custom-dropdown"
+      [items]="products"
+      bindLabel="name"
+      bindValue="id"
+      formControlName="type"
+      placeholder="Choose a material"
+      (change)="onProductChange($event)"
+      [clearable]="!!selectedProduct">
+
+      <ng-template ng-option-tmp let-item="item">
+        <div class="flex items-center">
+          <img [src]="item.imageUrl" width="40" height="40" class="mr-2 object-contain" />
+          <span>{{ item.name }}</span>
+        </div>
+      </ng-template>
+    </ng-select>
     </div>
 
     <ng-container *ngIf="isDoorsLikeType()">
